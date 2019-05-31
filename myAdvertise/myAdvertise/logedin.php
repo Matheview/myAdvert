@@ -29,10 +29,10 @@
                 Tu Mati pasuje wyciągnąć dane z user_login
             --></p>
             <div class="account-info">
-               <a class="account-a" href="logout.php">log out</a>
+               <a class="account-a" href="functions.php?logout=true">log out</a>
               </ul>
             </div>
-          
+
             <a href="#">+ add advert</a>
           </div>
           <div class="bot-nav">

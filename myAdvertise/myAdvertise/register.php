@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <?php
+    session_start();
+    ?>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -34,20 +37,20 @@
         <div class="right-column">
           <img src="imgs/billboard.png" alt="">
           <!--Formularz ma się "wysłać" po przejściu walidacji po stronie klienta (js) i po sprawdzeniu czy w bazie nie istnieje już inny użytkownik o podanym loginie czy e-mailu-->
-          <form action="" method="POST">
-            <input type="text" placeholder="Your login..." id="loginInput"/>
-            <input type="password" placeholder="Your password..." id="passwordInput" />
-            <input type="text" placeholder="Your e-mail..." id="emailInput"/>
-            <input type="text" placeholder="Your phone number..." id="phoneNumberInput" />
-            <input type="text" placeholder="Your city name..." id="cityInput" />
-            <input type="submit" class ="submit-btn">
+          <form method="POST" action="functions.php">
+            <input name="user_name" type="text" placeholder="Your login..." id="loginInput"/>
+            <input name="user_passwd" type="password" placeholder="Your password..." id="passwordInput" />
+            <input name="user_email" type="text" placeholder="Your e-mail..." id="emailInput"/>
+            <input name="user_phone"type="text" placeholder="Your phone number..." id="phoneNumberInput" />
+            <input name="user_city" type="text" placeholder="Your city name..." id="cityInput" />
+            <input type="submit" name="register" class="submit-btn">
           </form>
         </div>
       </header>
       <footer>
         <p>
           <span>my</span><strong>Advert</strong> 2019 | all rights reserved | made with <i class="fas fa-heart"></i> by
-          <span class="author1">Fyrr</span> && <span class="author2" >Maquintosh</span> 
+          <span class="author1">Fyrr</span> && <span class="author2" >Maquintosh</span>
         </p>
       </footer>
     </div>

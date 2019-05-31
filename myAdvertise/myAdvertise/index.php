@@ -26,12 +26,15 @@
             <h1><span>my</span>Advert</h1>
             <p class="account"><i class="fas fa-user-circle"></i>account <!--nazwa account jeśli nie jesteśmy zalogowani--></p>
             <div class="account-info">
-              <input type="text" placeholder="login...">
-              <input type="password" placeholder="password...">
-               <a class="account-a" href="login.php">sign in</a>
+              <form id="login_a" method="POST" action="functions.php">
+              <input name="user_email" type="text" placeholder="login...">
+              <input name="user_passwd" type="password" placeholder="password...">
+              <input type="hidden" name="login" value="login" />
+               <a href="#" class="account-a" onclick="document.getElementById('login_a').submit();">sign in</a>
+             </form>
               </ul>
             </div>
-            
+
             <a href="#">+ add advert</a>
           </div>
           <div class="bot-nav">
