@@ -1,4 +1,4 @@
-/*Podstawowa walidacja rejestacji po stronie klienta  */
+/*Podstawowa walidacja rejestacji po stronie klienta*/
 
 const loginField = document.getElementById("loginInput");
 const passwordField = document.getElementById("passwordInput");
@@ -11,9 +11,9 @@ const signupBtn = document.querySelector("input.submit-btn");
 
 
 
-form.onsubmit = function validateForm(e) {
+form.onsubmit = function validateForm() {
 
-    e.preventDefault();
+
 
     if (loginField.value.length < 3) {
         window.alert("Fill login field properly ! Your login must have more than 3 characters!");
@@ -47,8 +47,6 @@ form.onsubmit = function validateForm(e) {
 
 
     alert("Form submitted. You can now sign in to Your account !");
-    window.close();
-    window.open("logedin.php");
     return true;
 
 }
