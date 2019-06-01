@@ -1,4 +1,7 @@
-<!--Strona główna przed zalogowaniem-->
+
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,14 +27,9 @@
         <nav>
           <div class="nav-wrap">
             <h1><span>my</span>Advert</h1>
-            <p class="account"><i class="fas fa-user-circle"></i>account <!--nazwa account jeśli nie jesteśmy zalogowani--></p>
+            <p class="account"><i class="fas fa-user-circle"></i>Hello <?php include('functions.php'); return_user_name() ?></p>
             <div class="account-info">
-              <form id="login_a" method="POST" action="functions.php">
-              <input name="user_email" type="text" placeholder="login...">
-              <input name="user_passwd" type="password" placeholder="password...">
-              <input type="hidden" name="login" value="login" />
-               <a href="#" class="account-a" onclick="document.getElementById('login_a').submit();">sign in</a>
-             </form>
+               <a class="account-a" href="functions.php?logout=true">log out</a>
               </ul>
             </div>
 

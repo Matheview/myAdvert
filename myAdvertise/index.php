@@ -1,5 +1,7 @@
-<!--Po zalogowaniu--->
-
+<?php
+session_start();
+include('functions.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,11 +27,14 @@
         <nav>
           <div class="nav-wrap">
             <h1><span>my</span>Advert</h1>
-            <p class="account"><i class="fas fa-user-circle"></i>Hello...<!--
-                Tu Mati pasuje wyciągnąć dane z user_login
-            --></p>
+            <p class="account"><i class="fas fa-user-circle"></i>account <!--nazwa account jeśli nie jesteśmy zalogowani--></p>
             <div class="account-info">
-               <a class="account-a" href="functions.php?logout=true">log out</a>
+              <form id="login_a" method="POST" action="functions.php">
+              <input name="user_email" type="text" placeholder="login...">
+              <input name="user_passwd" type="password" placeholder="password...">
+              <input type="hidden" name="login" value="login" />
+               <a href="#" class="account-a" onclick="document.getElementById('login_a').submit();">sign in</a>
+             </form>
               </ul>
             </div>
 

@@ -1,11 +1,9 @@
-<!--Strona z formularzem-->
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php
-    session_start();
-    ?>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -37,7 +35,7 @@
         <div class="right-column">
           <img src="imgs/billboard.png" alt="logo">
           <!--Formularz ma się "wysłać" po przejściu walidacji po stronie klienta (js) i po sprawdzeniu czy w bazie nie istnieje już inny użytkownik o podanym loginie czy e-mailu-->
-          <form method="POST" action="functions.php" id="register-form">
+          <form method="POST" action="functions.php" id="register-form" onsubmit="validateForm()">
             <input name="user_name" type="text" placeholder="Your login..." id="loginInput"/>
             <input name="user_passwd" type="password" placeholder="Your password..." id="passwordInput" />
             <input name="user_email" type="text" placeholder="Your e-mail..." id="emailInput"/>
