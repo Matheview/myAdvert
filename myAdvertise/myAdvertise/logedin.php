@@ -25,7 +25,7 @@
         <nav>
           <div class="nav-wrap">
             <h1><span>my</span>Advert</h1>
-            <p class="account"><i class="fas fa-user-circle"></i>Witaj...<!--
+            <p class="account"><i class="fas fa-user-circle"></i>Hello...<!--
                 Tu Mati pasuje wyciągnąć dane z user_login
             --></p>
             <div class="account-info">

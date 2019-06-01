@@ -35,15 +35,15 @@
           </p>
         </div>
         <div class="right-column">
-          <img src="imgs/billboard.png" alt="">
+          <img src="imgs/billboard.png" alt="logo">
           <!--Formularz ma się "wysłać" po przejściu walidacji po stronie klienta (js) i po sprawdzeniu czy w bazie nie istnieje już inny użytkownik o podanym loginie czy e-mailu-->
-          <form method="POST" action="functions.php">
+          <form method="POST" action="functions.php" id="register-form">
             <input name="user_name" type="text" placeholder="Your login..." id="loginInput"/>
             <input name="user_passwd" type="password" placeholder="Your password..." id="passwordInput" />
             <input name="user_email" type="text" placeholder="Your e-mail..." id="emailInput"/>
             <input name="user_phone"type="text" placeholder="Your phone number..." id="phoneNumberInput" />
             <input name="user_city" type="text" placeholder="Your city name..." id="cityInput" />
-            <input type="submit" name="register" class="submit-btn">
+            <input type="submit" name="register" class="submit-btn" value="sign up">
           </form>
         </div>
       </header>
