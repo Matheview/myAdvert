@@ -254,15 +254,34 @@ main {
   border-top: 10px solid #000;
 }
 
+main h2 {
+  text-align: center;
+  padding: 20px;
+  font-size: 5rem;
+  font-weight: 300;
+  color: #000;
+  width: 40%;
+  border-bottom: 3px solid #000;
+  margin: 0 auto;
+}
+
+main img.main-img {
+  position: absolute;
+  width: 5%;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 main>div.categories {
   position: relative;
   display: flex;
   width: 100%;
-  height: 40vh;
+  height: 32vh;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 100px;
+  padding: 40px;
 }
 
 main>div.categories .category {
@@ -297,9 +316,9 @@ main>div.categories .category>i {
 
 main>div.get-started-bar {
   position: relative;
-  height: 20vh;
+  height: 15vh;
   width: 100%;
-  background: #ff8a65;
+  background: #ffe082;
 }
 
 main>div.get-started-bar>a {
@@ -416,7 +435,7 @@ header.register-header div.right-column>form input {
 header.register-header div.right-column>form input.submit-btn {
   width: 100%;
   height: 60px;
-  background: #ffe082;
+  background: #000;
   border-style: none;
   text-align: center;
   margin: 10px 0;
@@ -425,7 +444,7 @@ header.register-header div.right-column>form input.submit-btn {
   font-size: 2.5rem;
   color: #7986cb;
   opacity: 0.5;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 header.register-header div.right-column>form input.submit-btn:hover {
@@ -433,8 +452,6 @@ header.register-header div.right-column>form input.submit-btn:hover {
   font-size: 3rem;
   letter-spacing: 2px;
 }
-
-
 
 header.register-header div.right-column>form input:focus {
   border-bottom: 10px solid #ff8a65;
@@ -488,6 +505,366 @@ footer span {
 
 footer i {
   color: red;
+}
+
+/*ADVERTS*/
+
+section.create-advert {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.top-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+}
+
+.top-content p {
+  font-size: 6rem;
+  text-align: center;
+  padding: 20px;
+  margin-top: 100px;
+  font-weight: 300;
+}
+
+.bottom-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 10%;
+}
+
+header.header-advert {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #ffe082;
+}
+
+header.header-advert img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+}
+
+header.header-advert footer.footer-advert {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #fff;
+}
+
+section.add-advert {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: #7986cb;
+}
+
+section.add-advert>form.advert-creation-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  padding: 0 20px;
+}
+
+section.add-advert>form.advert-creation-form textarea {
+  font-family: "Heebo", sans-serif;
+  font-size: 1.5rem;
+  height: 200px;
+  padding: 10px;
+}
+
+section.add-advert>form.advert-creation-form div.category-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+section.add-advert>form.advert-creation-form div.imgs-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+section.add-advert>form.advert-creation-form input {
+  font-size: 1.5rem;
+  padding: 2px 20px;
+  margin: 0 auto;
+  font-family: "Heebo", sans-serif;
+  border: none;
+}
+
+section.add-advert>form.advert-creation-form input.title-input {
+  width: 350px;
+}
+
+section.add-advert>form.advert-creation-form input[type="file"] {
+  display: none;
+}
+
+section.add-advert>form.advert-creation-form input.submit-btn {
+  width: 120px;
+  height: 60px;
+  border-radius: 8px;
+  margin: 10px auto;
+  font-size: 4rem;
+  color: #7986cb;
+  transition: 0.3s;
+}
+
+section.add-advert>form.advert-creation-form input.submit-btn:hover {
+  background-color: #fff;
+}
+
+section.add-advert>form.advert-creation-form label.cat-label {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background: #ff8a65;
+  border-radius: 50%;
+}
+
+section.add-advert>form.advert-creation-form label.img-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: 70px;
+  width: 33.33%;
+  background-color: #ff8a65;
+  font-size: 1.5rem;
+  border: 2px dashed #fff;
+  margin: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+section.add-advert>form.advert-creation-form label.img-label:hover {
+  opacity: 1;
+}
+
+section.add-advert>form.advert-creation-form label.img-label.main {
+  background-color: #ffe082;
+  color: #7986cb;
+}
+
+section.add-advert>form.advert-creation-form label.img-label.main>i {
+  color: #7986cb;
+}
+
+section.add-advert>form.advert-creation-form label.cat-label>i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #fff;
+}
+
+section.add-advert>form.advert-creation-form p {
+  text-align: center;
+  font-size: 3rem;
+  padding: 10px 20px;
+  font-weight: 700;
+  color: #ffe082;
+}
+
+/*Asides*/
+
+aside.automotive-tab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  top: 0;
+  width: 50vw;
+  height: 100%;
+  background: #ffe082;
+  border-left: 10px solid #000;
+  transition: 0.3s;
+  z-index: 1410;
+  right: -100%;
+}
+
+aside.clothes-tab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  top: 0;
+  width: 50vw;
+  height: 100%;
+  background: #ffe082;
+  border-left: 10px solid #000;
+  transition: 0.3s;
+  z-index: 1410;
+  right: -100%;
+}
+
+aside.electronics-tab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  top: 0;
+  width: 50vw;
+  height: 100%;
+  background: #ffe082;
+  border-left: 10px solid #000;
+  transition: 0.3s;
+  z-index: 1410;
+  right: -100%;
+}
+
+aside.music-accessories-tab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  top: 0;
+  width: 50vw;
+  height: 100%;
+  background: #ffe082;
+  border-left: 10px solid #000;
+  transition: 0.3s;
+  z-index: 1410;
+  right: -100%;
+}
+
+aside.automotive-tab.show {
+  right: 0;
+}
+
+aside.clothes-tab.show {
+  right: 0;
+}
+
+aside.electronics-tab.show.show {
+  right: 0;
+}
+
+aside.music-accessories-tab.show {
+  right: 0;
+}
+
+aside>form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+}
+
+aside>img {
+  position: absolute;
+  top: -2px;
+  width: 10%;
+}
+
+aside>form p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+aside>form div.cat-logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: #7986cb;
+  border-radius: 50%;
+  border: 4px solid #000;
+}
+
+aside>form input {
+  padding: 4px 20px;
+  text-align: center;
+  font-family: "Heebo", sans-serif;
+  border: 2px solid #fff;
+  border-radius: 4px;
+}
+
+aside>form div.cat-logo>i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.5rem;
+  color: #fff;
+}
+
+aside>form div.condition-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+aside>form div.condition-box>label {
+  padding: 10px;
+  background-color: #ff8a65;
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin: 5px 0;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+aside>form button {
+  padding: 15px 40px;
+  font-family: "Heebo", sans-serif;
+  font-size: 2rem;
+  background: #7986cb;
+  border: 2px solid #fff;
+  color: #fff;
+  opacity: 0.5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+aside>form button:hover {
+  opacity: 1;
 }
 
 /*ANIMATIONS*/

@@ -1,7 +1,4 @@
-<?php
-session_start();
-include('functions.php');
-?>
+<!--Strona główna przed zalogowaniem-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,10 +35,10 @@ include('functions.php');
               </ul>
             </div>
 
-            <a href="#">+ add advert</a>
+            <a href="createadv.php">+ add advert</a>
           </div>
           <div class="bot-nav">
-            <p>place for Your advertisements</p>
+            <p>Place for Your advertises...</p>
             <img src="imgs/car.png" alt="car" class="car" />
             <img src="imgs/car1.png" alt="car" class="car1" />
             <img src="imgs/car2.png" alt="car" class="car2" />
@@ -51,6 +48,8 @@ include('functions.php');
         <img src="imgs/billboard.png" alt="logo" class="header-logo" />
       </header>
       <main>
+      <h2>Check for newest adverts</h2>
+      <img class="main-img" src="imgs/poster.png" alt="news logo">
         <div class="categories">
           <div class="category"><i class="fas fa-car"></i></div>
           <div class="category"><i class="fas fa-tshirt"></i></div>
