@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>myAdvert - add Your advert</title>
+    <title>myAdvert - add Your offer</title>
     <link
       href="https://fonts.googleapis.com/css?family=Heebo:300,400,700&display=swap"
       rel="stylesheet"
@@ -38,7 +38,8 @@
         </div>
      </header>
      <section class="add-offer">
-       <form action="#" class="offer-creation-form" id="offer-form">
+       <!--FORM ACTION-->
+       <form action="functions.php" class="offer-creation-form" id="offer-form">
       <p>title:</p>
         <input type="text" class="title-input" id="title">
         <p>choose category:</p>
@@ -80,24 +81,23 @@ add_photo_alternate
         <p>price:</p>
         <input type="text" id="price">
         <input type="submit" value="+" class="submit-btn" id="add-offer-btn">
-</form>
         <aside class="automotive-tab">
         <img src="imgs/poster.png" alt="">
-          <form action="#" class="automotive-form">
+          <div class="automotive-form form">
           <div class="cat-logo">
           <i class="fas fa-car"></i>
           </div>
-          <p>vehicle brand: </p>
+          <p class="form-p">vehicle brand: </p>
           <input type="text" id="brand">
-          <p>vehicle model: </p>
+          <p class="form-p">vehicle model: </p>
           <input type="text" id="model">
-          <p>vehicle year: </p>
+          <p class="form-p">vehicle year: </p>
           <input type="number" id="year">
-          <p>vehicle mileage: </p>
+          <p class="form-p">vehicle mileage: </p>
           <input type="text" id="mileage">
-          <p>vehicle engine: </p>
+          <p class="form-p">vehicle engine: </p>
           <input type="text" id="engine">
-          <p>condition: </p>
+          <p class="form-p">condition: </p>
           <div class="condition-box">
           <label for="new">new</label>
           <input name="condition" type="radio" id="new">
@@ -109,23 +109,23 @@ add_photo_alternate
           <button>
             next
           </button>
-          </form>
+          </div>
         </aside>
         <aside class="clothes-tab">
         <img src="imgs/poster.png" alt="">
-          <form action="#" class="clothes-form">
+          <div class="clothes-form form">
           <div class="cat-logo">
           <i class="fas fa-tshirt"></i>
           </div>
-          <p>brand: </p>
+          <p class="form-p">brand: </p>
           <input type="text" id="brand">
-          <p>colour: </p>
+          <p class="form-p">colour: </p>
           <input type="text" id="colour">
-          <p>size: </p>
+          <p class="form-p">size: </p>
           <input type="text" id="size">
-          <p>sex: </p>
+          <p class="form-p">sex: </p>
           <input type="text" id="sex">
-          <p>condition: </p>
+          <p class="form-p">condition: </p>
           <div class="condition-box">
           <label for="new">new</label>
           <input name="condition" type="radio" id="new">
@@ -137,19 +137,19 @@ add_photo_alternate
           <button class="clothes-btn">
             next
           </button>
-          </form>
+          </div>
         </aside>
         <aside class="electronics-tab">
         <img src="imgs/poster.png" alt="">
-          <form action="#" class="electronics-form">
+          <div class="electronics-form form">
           <div class="cat-logo">
           <i class="fas fa-mobile-alt"></i>
           </div>
-          <p>brand: </p>
+          <p class="form-p">brand: </p>
           <input type="text" id="brand">
-          <p>model: </p>
+          <p class="form-p">model: </p>
           <input type="text" id="model">
-          <p>condition: </p>
+          <p class="form-p">condition: </p>
           <div class="condition-box">
           <label for="new">new</label>
           <input name="condition" type="radio" id="new">
@@ -161,19 +161,19 @@ add_photo_alternate
           <button class="electronics-btn">
             next
           </button>
-          </form>
+          </div>
         </aside>
         <aside class="music-accessories-tab">
         <img src="imgs/poster.png" alt="">
-          <form action="#" class="music-form">
+          <div class="music-accessories-form form">
           <div class="cat-logo">
           <i class="fas fa-music"></i>
           </div>
-          <p>brand: </p>
+          <p class="form-p">brand: </p>
           <input type="text" id="brand">
-          <p>model: </p>
+          <p class="form-p">model: </p>
           <input type="text" id="model">
-          <p>condition: </p>
+          <p class="form-p">condition: </p>
           <div class="condition-box">
           <label for="new">new</label>
           <input name="condition" type="radio" id="new">
@@ -185,8 +185,9 @@ add_photo_alternate
           <button class="music-btn">
             next
           </button>
-          </form>
+          </div>
         </aside>
+</form>
      </section>
     </div>
     <script src="scripts/offer.js"></script>

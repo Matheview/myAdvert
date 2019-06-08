@@ -741,7 +741,7 @@ aside.automotive-tab {
   border-left: 10px solid #000;
   transition: 0.3s;
   z-index: 1410;
-  right: -100%;
+  right: -200%;
 }
 
 aside.clothes-tab {
@@ -757,7 +757,7 @@ aside.clothes-tab {
   border-left: 10px solid #000;
   transition: 0.3s;
   z-index: 1410;
-  right: -100%;
+  right: -200%;
 }
 
 aside.electronics-tab {
@@ -773,7 +773,7 @@ aside.electronics-tab {
   border-left: 10px solid #000;
   transition: 0.3s;
   z-index: 1410;
-  right: -100%;
+  right: -200%;
 }
 
 aside.music-accessories-tab {
@@ -789,7 +789,7 @@ aside.music-accessories-tab {
   border-left: 10px solid #000;
   transition: 0.3s;
   z-index: 1410;
-  right: -100%;
+  right: -200%;
 }
 
 aside.automotive-tab.show {
@@ -808,12 +808,12 @@ aside.music-accessories-tab.show {
   right: 0;
 }
 
-aside>form {
+aside div.form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  width: 50vw;
   height: 90%;
   padding: 20px;
 }
@@ -824,12 +824,13 @@ aside>img {
   width: 10%;
 }
 
-aside>form p {
+aside div.form p.form-p {
   font-size: 2rem;
   font-weight: 700;
+  color: #7986cb;
 }
 
-aside>form div.cat-logo {
+aside div.form div.cat-logo {
   position: relative;
   width: 80px;
   height: 80px;
@@ -838,7 +839,7 @@ aside>form div.cat-logo {
   border: 4px solid #000;
 }
 
-aside>form input {
+aside div.form input {
   padding: 4px 20px;
   text-align: center;
   font-family: "Heebo", sans-serif;
@@ -846,7 +847,7 @@ aside>form input {
   border-radius: 4px;
 }
 
-aside>form div.cat-logo>i {
+aside div.form div.cat-logo>i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -855,14 +856,14 @@ aside>form div.cat-logo>i {
   color: #fff;
 }
 
-aside>form div.condition-box {
+aside div.form div.condition-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
 }
 
-aside>form div.condition-box>label {
+aside div.form div.condition-box>label {
   padding: 10px;
   background-color: #ff8a65;
   font-weight: 300;
@@ -872,7 +873,7 @@ aside>form div.condition-box>label {
   border: 2px solid #fff;
 }
 
-aside>form button {
+aside div.form button {
   padding: 15px 40px;
   font-family: "Heebo", sans-serif;
   font-size: 2rem;
@@ -884,7 +885,7 @@ aside>form button {
   cursor: pointer;
 }
 
-aside>form button:hover {
+aside div.form button:hover {
   opacity: 1;
 }
 
