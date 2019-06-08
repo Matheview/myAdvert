@@ -1,13 +1,15 @@
-<?php
-session_start();
-?>
+<!--Strona z formularzem-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <?php
+    session_start();
+    ?>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>myAdvert</title>
+    <title>myAdvert - register your account</title>
     <link
       href="https://fonts.googleapis.com/css?family=Heebo:300,400,700&display=swap"
       rel="stylesheet"
@@ -35,7 +37,7 @@ session_start();
         <div class="right-column">
           <img src="imgs/billboard.png" alt="logo">
           <!--Formularz ma się "wysłać" po przejściu walidacji po stronie klienta (js) i po sprawdzeniu czy w bazie nie istnieje już inny użytkownik o podanym loginie czy e-mailu-->
-          <form method="POST" action="functions.php" id="register-form" onsubmit="validateForm()">
+          <form method="POST" action="functions.php" id="register-form">
             <input name="user_name" type="text" placeholder="Your login..." id="loginInput"/>
             <input name="user_passwd" type="password" placeholder="Your password..." id="passwordInput" />
             <input name="user_email" type="text" placeholder="Your e-mail..." id="emailInput"/>

@@ -1,7 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 $connStr = "host=78.46.51.229 port=5432 dbname=meteopi_myadvert user=meteopi_myadvert password=W86bn+OdGK";
 
 function register() {
@@ -18,11 +16,9 @@ function register() {
   foreach($result as  $row){
     if (strpos($a, 'Witaj') !== false) {
       header('Location: logedin.php');
-      exit();
     }
     else {
       header('Location: index.php');
-      exit();
     }
   }
   pg_close($conn);
@@ -37,32 +33,14 @@ function login(){
   }
   $result = pg_fetch_row($query);
   foreach($result as  $row){
-    $row = str_replace("(", "", $row);
-    $row = str_replace(")", "", $row);
-    $pieces = explode(",", $row);
-    if (($pieces[0] != '') == 1) {
-      $_SESSION['sess_name'] = $pieces[0];
-      $_SESSION['sess_code'] = $pieces[1];
-      $_SESSION['sess_city'] = $pieces[2];
-      $_SESSION['sess_phone'] = $pieces[3];
-      header('Location: logedin.php?user_id='.$_SESSION['sess_code']);
-      exit();
-    }
-    else {
-      header('Location: register.php');
-      exit();
-    }
+      if (strpos($a, 'Witaj') !== false) {
+        header('Location: logedin.php');
+      }
+      else {
+        header('Location: register.php');
+      }
   }
   pg_close($conn);
-}
-
-function return_user_name() {
-  if (isset($_SESSION['sess_name'])) {
-    echo($_SESSION['sess_name']);
-  }
-  else {
-    echo('...');
-  }
 }
 
 if (isset($_POST['register'])) {
@@ -72,10 +50,7 @@ if (isset($_POST['login'])) {
   login();
 }
 if (isset($_GET['logout'])) {
-  session_unset();
-  session_destroy();
   header('Location: index.php');
-  exit();
 }
 
 ?>
