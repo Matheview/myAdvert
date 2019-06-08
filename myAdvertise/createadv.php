@@ -23,21 +23,22 @@
   </head>
   <body>
     <div class="wrap">
-    <section class="create-advert">
-     <header class="header-advert">
+    <section class="create-offer">
+     <header class="header-offer">
        <div class="top-content">
+       <a href="index.php"><span>my</span>Advert</a>
         <p>we begin here...</p>
         <img src="imgs/banner.png" alt="baner logo">
         </div>
         <div class="bottom-content">
-        <footer class="footer-advert">
+        <footer class="footer-offer">
             <p> made with <i class="fas fa-heart"></i> by
           <span class="author1">Maquintosh</span> && <span class="author2" >Fyrr</span></p>
         </footer>
         </div>
      </header>
-     <section class="add-advert">
-       <form action="#" class="advert-creation-form" id="advert-form">
+     <section class="add-offer">
+       <form action="#" class="offer-creation-form" id="offer-form">
       <p>title:</p>
         <input type="text" class="title-input" id="title">
         <p>choose category:</p>
@@ -78,7 +79,7 @@ add_photo_alternate
 </div>
         <p>price:</p>
         <input type="text" id="price">
-        <input type="submit" value="+" class="submit-btn" id="add-advert-btn">
+        <input type="submit" value="+" class="submit-btn" id="add-offer-btn">
 </form>
         <aside class="automotive-tab">
         <img src="imgs/poster.png" alt="">
@@ -188,6 +189,6 @@ add_photo_alternate
         </aside>
      </section>
     </div>
-    <script src="scripts/advert.js"></script>
+    <script src="scripts/offer.js"></script>
   </body>
 </html>
