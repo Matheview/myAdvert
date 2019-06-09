@@ -1,7 +1,11 @@
-<!--Strona główna przed zalogowaniem-->
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <?php include("functions.php");
+    if(isset($_SESSION['user_name'])) {
+      header('Location: logedin.php');
+    }?>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -24,7 +28,7 @@
         <nav>
           <div class="nav-wrap">
             <h1><span>my</span>Advert</h1>
-            <p class="account"><i class="fas fa-user-circle"></i>account <!--nazwa account jeśli nie jesteśmy zalogowani--></p>
+            <p class="account"><i class="fas fa-user-circle"></i><?php check_user("account") ?></p>
             <div class="account-info">
               <form id="login_a" method="POST" action="functions.php">
               <input name="user_email" type="text" placeholder="login...">
@@ -35,7 +39,7 @@
               </ul>
             </div>
 
-            <a href="createadv.php">+ add advert</a>
+            <a href="createadv.php?add_offer=true">+ add advert</a>
           </div>
           <div class="bot-nav">
             <p>Place for Your advertises...</p>
