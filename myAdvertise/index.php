@@ -55,10 +55,10 @@
       <h2>Check for newest adverts</h2>
       <img class="main-img" src="imgs/poster.png" alt="news logo">
         <div class="categories">
-          <div class="category"><i class="fas fa-car"></i></div>
-          <div class="category"><i class="fas fa-tshirt"></i></div>
-          <div class="category"><i class="fas fa-mobile-alt"></i></div>
-          <div class="category"><i class="fas fa-music"></i></div>
+          <a class="category" href="automotive.php"><i class="fas fa-car"></i></a>
+          <a class="category" href="clothes.php"><i class="fas fa-tshirt"></i></a>
+          <a class="category" href="electronics.php"><i class="fas fa-mobile-alt"></i></a>
+          <a class="category" href="music.php"><i class="fas fa-music"></i></a>
         </div>
         <div class="get-started-bar">
           <a href="register.php" class="get-started-btn">get started</a>

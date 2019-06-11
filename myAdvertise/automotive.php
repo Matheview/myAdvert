@@ -33,7 +33,6 @@
              </form>
               </ul>
             </div>
-
             <a href="createadv.php">+ add advert</a>
           </div>
           <div class="bot-nav">
@@ -46,8 +45,14 @@
         </nav>
         <img src="imgs/billboard.png" alt="logo" class="header-logo" />
       </header>
-      <main>
-      <h2>Check for newest adverts</h2>
+      <main style="background: #ff8a65">
+       <div class="offers-wrap">
+
+       </div>
+      </main>
+
         <!--tu infrmacje z bazy-->
+        <script src="scripts/index.js"></script>
+        <script src="scripts/offersList.js"></script>
   </body>
 </html>
