@@ -56,24 +56,24 @@
         <label for="main-img" class="img-label main"><i class="material-icons">
 add_photo_alternate
 </i>Choose main image</label>
-<input type="file" id="main-img" name='img1'>
-        <label for="main-img" class="img-label"><i class="material-icons">
-add_photo_alternate
-</i>Choose image</label>
-<input type="file" id="img1" name='img2'>
+<input type="file" id="img1" name='img1'>
         <label for="img1" class="img-label"><i class="material-icons">
 add_photo_alternate
 </i>Choose image</label>
-<input type="file" id="img2" name='img3'>
+<input type="file" id="img2" name='img2'>
         <label for="img2" class="img-label"><i class="material-icons">
 add_photo_alternate
 </i>Choose image</label>
-<input type="file" id="img3" name='img4'>
+<input type="file" id="img3" name='img3'>
         <label for="img3" class="img-label"><i class="material-icons">
 add_photo_alternate
 </i>Choose image</label>
-<input type="file" id="img4" name='img5'>
+<input type="file" id="img4" name='img4'>
         <label for="img4" class="img-label"><i class="material-icons">
+add_photo_alternate
+</i>Choose image</label>
+<input type="file" id="img5" name='img5'>
+        <label for="img5" class="img-label"><i class="material-icons">
 add_photo_alternate
 </i>Choose image</label>
 </div>

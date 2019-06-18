@@ -48,6 +48,30 @@ function login(){
   pg_close($conn);
 }
 
+function show_automotive_all() {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  if (!pg_connection_busy($conn)) {
+    $query = pg_query($conn, "WITH i AS(SELECT concat('offers_picture/automotive/', offer_id, '/', picture_name) file,
+			     ROW_NUMBER() OVER(PARTITION BY p.offer_id ORDER BY p.picture_id ASC) as queue, p.offer_id
+		  FROM offer_automotive.pictures p)
+      SELECT i.file, desc_short, concat(regexp_replace(SUBSTRING(desc_long, 1, 250), '\r|\n', ' ', 'g'), '...') as desc_long, u.user_city as city, price, oa.created_at
+      	FROM offer_automotive.offers oa
+      	INNER JOIN users u ON oa.user_id=u.user_id, i
+      	WHERE i.queue=1 AND i.offer_id=oa.offer_id
+      	ORDER BY oa.offer_id DESC;");
+  }
+  $result = pg_fetch_all($query);
+  foreach($result as $row) {
+    echo("<div style='width: 80%; display: inline-block; overflow: hidden; float: left; border: 1px solid black;'>
+      <div style='width: 30%; overflow: hidden; float: left; border: 1px solid black;'><img src='".$row['file']."' style='width:50%; height:50%;'></div>
+      <div style='width: 20%; overflow: hidden; float: left; border: 1px solid black;'><h1>".$row['desc_short']."</h1></div>
+      <div>".$row['desc_long']."</div>
+      <div style='width: 20%; display: inline-block; overflow: hidden; float: right; border: 1px solid black;'><h1>".$row['price']." zł</h1></div>
+      <div><h3>".$row['created_at']."</h3></div>
+      <div><h3>".$row['city']."</h3></div></div>");
+    }
+}
+
 function add_offer() {
   $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
   $files = ['main-img', 'img1', 'img2', 'img3', 'img4'];
@@ -59,16 +83,21 @@ function add_offer() {
     .$_POST['mileage'].", ".$_POST['engine'].", ".$_POST['year'].");");
     $result = pg_fetch_row($query);
     foreach($result as $row){
-      $target_dir = 'offers_picture/'.$_POST['cat']."/".$row;
-      if (!file_exists($target_dir)) {
-        mkdir($target_dir, 0777, true);
+      if($row == 0) {
+        echo(';error');
       }
-      foreach($files as $file){
-        if($_FILES[$file]["name"] !== '') {
-            $query = pg_query($conn, "select offer_automotive.add_picture(".$row.", '".$_FILES[$file]["name"]."');");
-            $target_file = $target_dir.'/' . basename($_FILES[$file]["name"]);
-            move_uploaded_file($_FILES[$file]["tmp_name"], $target_file);
-            pg_fetch_row($query);
+      else {
+        $target_dir = 'offers_picture/'.$_POST['cat']."/".$row;
+        if (!file_exists($target_dir)) {
+          mkdir($target_dir, 0777, true);
+        }
+        foreach($files as $file){
+          if($_FILES[$file]["name"] !== '') {
+              $query = pg_query($conn, "select offer_automotive.add_picture(".$row.", '".$_FILES[$file]["name"]."');");
+              $target_file = $target_dir.'/' . basename($_FILES[$file]["name"]);
+              move_uploaded_file($_FILES[$file]["tmp_name"], $target_file);
+              pg_fetch_row($query);
+          }
         }
       }
     }
@@ -119,14 +148,13 @@ function add_offer() {
         }
       }
     }
-    header('Location: index.php');
+      header('Location: index.php');
   }
 
   elseif($_POST['cat'] == "music-accessories"){
-    $query = pg_query($conn, "select offer_music_acc.create_offer_electronics('"
+    $query = pg_query($conn, "select offer_music_accessories.create_offer_music_acc('"
     .$_POST['title']."', '".$_POST['description']."', '".$_POST['condition']."', '"
-    .$_POST['brand']."', '".$_POST['model']."', ".$_POST['price'].", ".$_SESSION['user_id'].", '"
-    .$_POST['size']."', '".$_POST['sex']."');");
+    .$_POST['brand']."', '".$_POST['model']."', ".$_POST['price'].", ".$_SESSION['user_id'].", '".$_POST['type']."');");
     $result = pg_fetch_row($query);
     foreach($result as $row){
       $target_dir = 'offers_picture/'.$_POST['cat']."/".$row;
@@ -136,7 +164,7 @@ function add_offer() {
       foreach($files as $file){
         if($_FILES[$file]["name"] !== '') {
             echo($_FILES[$file]["name"]);
-            $query = pg_query($conn, "select offer_electronics.add_picture(".$row.", '".$_FILES[$file]["name"]."');");
+            $query = pg_query($conn, "select offer_music_accessories.add_picture(".$row.", '".$_FILES[$file]["name"]."');");
             $target_file = $target_dir.'/' . basename($_FILES[$file]["name"]);
             move_uploaded_file($_FILES[$file]["tmp_name"], $target_file);
             pg_fetch_row($query);
@@ -154,13 +182,31 @@ function add_offer() {
 
 function check_user($args) {
   if(isset($_SESSION['user_name'])) {
-    echo($_SESSION['user_name']);
+    echo('Hello '.$_SESSION['user_name'].'</p>
+    <div class="account-info">
+       <a class="account-a" href="functions.php?logout=true">log out</a>
+      </ul>
+    </div>');
   }
   elseif($args == "logedin") {
-    echo("...");
+    echo('Hello ...</p>
+    <div class="account-info">
+       <a class="account-a" href="functions.php?logout=true">log out</a>
+      </ul>
+    </div>');
   }
   elseif($args == "account") {
-    echo("account");
+    $js = "document.getElementById('login_a').submit();";
+    echo('account</p>
+      <div class="account-info">
+      <form id="login_a" method="POST" action="functions.php">
+      <input name="user_email" type="text" placeholder="login...">
+      <input name="user_passwd" type="password" placeholder="password...">
+      <input type="hidden" name="login" value="login" />
+       <a href="#" class="account-a" onclick="'.$js.'">sign in</a>
+     </form>
+      </ul>
+    </div>');
   }
 }
 
@@ -187,5 +233,6 @@ if (isset($_GET['add_offer'])){
     header('Location: register.php');
   }
 }
+echo(isset($_POST['addoffer']));
 
 ?>

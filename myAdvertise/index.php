@@ -29,16 +29,6 @@
           <div class="nav-wrap">
             <h1><span>my</span>Advert</h1>
             <p class="account"><i class="fas fa-user-circle"></i><?php check_user("account") ?></p>
-            <div class="account-info">
-              <form id="login_a" method="POST" action="functions.php">
-              <input name="user_email" type="text" placeholder="login...">
-              <input name="user_passwd" type="password" placeholder="password...">
-              <input type="hidden" name="login" value="login" />
-               <a href="#" class="account-a" onclick="document.getElementById('login_a').submit();">sign in</a>
-             </form>
-              </ul>
-            </div>
-
             <a href="createadv.php?add_offer=true">+ add advert</a>
           </div>
           <div class="bot-nav">
