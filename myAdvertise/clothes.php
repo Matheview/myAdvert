@@ -49,7 +49,7 @@
        </select>
       </div>
        <div class="offers-wrap" style="display: inline-block;">
-        <?php show_automotive_all()?>
+        <?php show_clothes_all()?>
        </div>
       </main>
       <script

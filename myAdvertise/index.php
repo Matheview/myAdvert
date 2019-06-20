@@ -27,9 +27,9 @@
       <header>
         <nav>
           <div class="nav-wrap">
-            <h1><span>my</span>Advert</h1>
+            <a class="index" href="index.php"><h1><span>my</span>Advert</h1></a>
             <p class="account"><i class="fas fa-user-circle"></i><?php check_user("account") ?></p>
-            <a href="createadv.php?add_offer=true">+ add advert</a>
+            <a class="add-offer" href="createadv.php?add_offer=true">+ add advert</a>
           </div>
           <div class="bot-nav">
             <p>Place for Your advertises...</p>

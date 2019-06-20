@@ -62,13 +62,29 @@ function show_automotive_all() {
   }
   $result = pg_fetch_all($query);
   foreach($result as $row) {
-    echo("<div style='width: 80%; display: inline-block; overflow: hidden; float: left; border: 1px solid black;'>
-      <div style='width: 30%; overflow: hidden; float: left; border: 1px solid black;'><img src='".$row['file']."' style='width:50%; height:50%;'></div>
-      <div style='width: 20%; overflow: hidden; float: left; border: 1px solid black;'><h1>".$row['desc_short']."</h1></div>
-      <div>".$row['desc_long']."</div>
-      <div style='width: 20%; display: inline-block; overflow: hidden; float: right; border: 1px solid black;'><h1>".$row['price']." zł</h1></div>
-      <div><h3>".$row['created_at']."</h3></div>
-      <div><h3>".$row['city']."</h3></div></div>");
+    echo('<div class="offer">
+        <div class="img-box">
+          <img src="'.$row['file'].'" alt="" />
+        </div>
+        <div class="offer-box">
+          <div class="offer-title">
+            <h1 class="title">'.$row['desc_short'].'</h1>
+          </div>
+          <div class="offer-description">
+            <p class="description">'.$row['desc_long'].'</p>
+          </div>
+          <div class="offer-price">
+            <p class="price">'.$row['price'].'</p>
+          </div>
+          <div class="offer-localisation">
+            <p class="localisation">'.$row['city'].'</p>
+          </div>
+          <div class="offer-date">
+            <p class="date">'.$row['created_at'].'</p>
+          </div>
+          <button>Show</button>
+        </div>
+      </div>');
     }
 }
 

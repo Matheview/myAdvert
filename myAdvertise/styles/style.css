@@ -39,7 +39,7 @@ nav {
   background: rgba(121, 134, 203, 0.5);
 }
 
-nav>div.nav-wrap {
+nav > div.nav-wrap {
   position: relative;
   display: flex;
   height: 100%;
@@ -49,7 +49,7 @@ nav>div.nav-wrap {
   align-items: center;
 }
 
-nav>div.nav-wrap div.account-info {
+nav > div.nav-wrap div.account-info {
   position: relative;
   display: none;
   height: 100%;
@@ -59,43 +59,50 @@ nav>div.nav-wrap div.account-info {
   padding: 0 10px;
 }
 
-nav>div.nav-wrap div.account-info.active {
+nav > div.nav-wrap div.account-info.active {
   display: flex;
 }
 
-nav>div.nav-wrap div.account-info p {
+nav > div.nav-wrap div.account-info p {
   font-size: 2.5rem;
   font-weight: 300;
   color: #fff;
 }
 
-nav>div.nav-wrap div.account-info a.account-a {
+nav > div.nav-wrap div.account-info a.account-a {
   font-size: 1.5rem;
   font-weight: 300;
   color: #fff;
   background: #ff8a65;
   margin: 0 5px;
   transition: 0.3s;
+  text-decoration: none;
+  padding: 2px 20px;
+  border-radius: 20px;
 }
 
-nav>div.nav-wrap div.account-info a.account-a:hover {
+nav > div.nav-wrap div.account-info a.account-a:hover {
   background: #fff;
   color: #ff8a65;
 }
 
-nav>div.nav-wrap span {
+nav > div.nav-wrap span {
   color: #ff8a65;
   font-weight: 300;
 }
 
-nav>div.nav-wrap h1 {
+nav > div.nav-wrap h1 {
   font-size: 7rem;
   color: #fff;
   line-height: 100px;
   padding: 0 20px;
 }
 
-nav>div.nav-wrap p.account {
+nav > div.nav-wrap a.index {
+  text-decoration: none;
+}
+
+nav > div.nav-wrap p.account {
   font-size: 2.5rem;
   color: #ff8a65;
   line-height: 100px;
@@ -105,16 +112,16 @@ nav>div.nav-wrap p.account {
   cursor: pointer;
 }
 
-nav>div.nav-wrap p.account:hover {
+nav > div.nav-wrap p.account:hover {
   background: #ff8a65;
   color: white;
 }
 
-nav>div.nav-wrap p.account:hover i {
+nav > div.nav-wrap p.account:hover i {
   color: white;
 }
 
-nav>div.nav-wrap p>i {
+nav > div.nav-wrap p > i {
   vertical-align: -4px;
   font-size: 3rem;
   color: #ff8a65;
@@ -123,7 +130,7 @@ nav>div.nav-wrap p>i {
   transition: 0.3s;
 }
 
-nav>div.nav-wrap input {
+nav > div.nav-wrap input {
   width: 200px;
   padding: 5px 20px;
   font-family: "Heebo", sans-serif;
@@ -134,11 +141,11 @@ nav>div.nav-wrap input {
   margin: 0 10px;
 }
 
-nav>div.nav-wrap input::placeholder {
+nav > div.nav-wrap input::placeholder {
   color: #7986cb;
 }
 
-nav>div.nav-wrap input:focus {
+nav > div.nav-wrap input:focus {
   padding: 5px 20px;
   font-family: "Heebo", sans-serif;
   border-style: none;
@@ -149,18 +156,18 @@ nav>div.nav-wrap input:focus {
   margin: 0 5px;
 }
 
-nav>div.nav-wrap div.search-box {
+nav > div.nav-wrap div.search-box {
   position: relative;
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
-nav>div.nav-wrap div.search-box:hover>i {
+nav > div.nav-wrap div.search-box:hover > i {
   color: #ff8a65;
 }
 
-nav>div.nav-wrap div.search-box>i {
+nav > div.nav-wrap div.search-box > i {
   position: absolute;
   font-size: 2.5rem;
   top: 50%;
@@ -170,7 +177,7 @@ nav>div.nav-wrap div.search-box>i {
   color: #fff;
 }
 
-nav>div.nav-wrap a {
+nav > div.nav-wrap a.add-offer {
   font-size: 2.5rem;
   background: #ffe082;
   text-decoration: none;
@@ -182,7 +189,7 @@ nav>div.nav-wrap a {
   transition: 0.3s;
 }
 
-nav>div.nav-wrap a:hover {
+nav > div.nav-wrap a.add-offer:hover {
   background: #fff;
   color: #ffe082;
 }
@@ -195,7 +202,7 @@ div.bot-nav {
   height: calc(40vh - 100px);
 }
 
-div.bot-nav>p {
+div.bot-nav > p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -273,7 +280,7 @@ main img.main-img {
   transform: translateX(-50%);
 }
 
-main>div.categories {
+main > div.categories {
   position: relative;
   display: flex;
   width: 100%;
@@ -284,7 +291,7 @@ main>div.categories {
   padding: 40px;
 }
 
-main>div.categories .category {
+main > div.categories .category {
   position: relative;
   width: 200px;
   height: 200px;
@@ -296,15 +303,15 @@ main>div.categories .category {
   opacity: 0.5;
 }
 
-main>div.categories .category:hover {
+main > div.categories .category:hover {
   opacity: 1;
 }
 
-main>div.categories .category:hover>i {
+main > div.categories .category:hover > i {
   color: #000;
 }
 
-main>div.categories .category>i {
+main > div.categories .category > i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -314,14 +321,14 @@ main>div.categories .category>i {
   transition: 0.3s;
 }
 
-main>div.get-started-bar {
+main > div.get-started-bar {
   position: relative;
   height: 15vh;
   width: 100%;
   background: #ffe082;
 }
 
-main>div.get-started-bar>a {
+main > div.get-started-bar > a {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -337,7 +344,7 @@ main>div.get-started-bar>a {
   border: 2px solid #fff;
 }
 
-main>div.get-started-bar>a:hover {
+main > div.get-started-bar > a:hover {
   color: #ff8a65;
   letter-spacing: 2px;
   border: 2px solid #ffe082;
@@ -353,7 +360,7 @@ header.register-header {
   width: 100%;
 }
 
-header.register-header>div.left-column {
+header.register-header > div.left-column {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -364,12 +371,12 @@ header.register-header>div.left-column {
   background-color: #7986cb;
 }
 
-header.register-header>div.left-column span {
+header.register-header > div.left-column span {
   font-weight: 300;
   color: #ff8a65;
 }
 
-header.register-header>div.left-column p {
+header.register-header > div.left-column p {
   font-weight: 300;
   font-size: 2.2rem;
   color: #fff;
@@ -378,7 +385,7 @@ header.register-header>div.left-column p {
   margin-top: 10px;
 }
 
-header.register-header>div.left-column>a {
+header.register-header > div.left-column > a {
   font-size: 10rem;
   color: #fff;
   padding: 20px 0;
@@ -388,7 +395,7 @@ header.register-header>div.left-column>a {
   font-weight: 700;
 }
 
-header.register-header>div.left-column>a:hover {
+header.register-header > div.left-column > a:hover {
   letter-spacing: 2px;
 }
 
@@ -407,7 +414,7 @@ header.register-header div.right-column img {
   height: 40%;
 }
 
-header.register-header div.right-column>form {
+header.register-header div.right-column > form {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -420,7 +427,7 @@ header.register-header div.right-column>form {
   bottom: 0;
 }
 
-header.register-header div.right-column>form input {
+header.register-header div.right-column > form input {
   width: 300px;
   height: 40px;
   background: #fff;
@@ -432,7 +439,7 @@ header.register-header div.right-column>form input {
   color: #ff8a65;
 }
 
-header.register-header div.right-column>form input.submit-btn {
+header.register-header div.right-column > form input.submit-btn {
   width: 100%;
   height: 60px;
   background: #000;
@@ -447,17 +454,17 @@ header.register-header div.right-column>form input.submit-btn {
   transition: 0.3s;
 }
 
-header.register-header div.right-column>form input.submit-btn:hover {
+header.register-header div.right-column > form input.submit-btn:hover {
   opacity: 1;
   font-size: 3rem;
   letter-spacing: 2px;
 }
 
-header.register-header div.right-column>form input:focus {
+header.register-header div.right-column > form input:focus {
   border-bottom: 10px solid #ff8a65;
 }
 
-header.register-header div.right-column>form input::placeholder {
+header.register-header div.right-column > form input::placeholder {
   color: #ff8a65;
 }
 
@@ -493,7 +500,7 @@ footer {
   border-top: 10px solid #000;
 }
 
-footer>p {
+footer > p {
   font-size: 2rem;
   color: #7986cb;
 }
@@ -529,7 +536,7 @@ section.create-offer a {
   padding: 10px 10px;
 }
 
-section.create-offer a>span {
+section.create-offer a > span {
   color: #ff8a65;
   font-weight: 300;
 }
@@ -537,7 +544,6 @@ section.create-offer a>span {
 section.create-offer a:hover {
   letter-spacing: 2px;
 }
-
 
 .top-content {
   position: relative;
@@ -603,7 +609,7 @@ section.add-offer {
   background: #7986cb;
 }
 
-section.add-offer>form.offer-creation-form {
+section.add-offer > form.offer-creation-form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -617,14 +623,14 @@ section.add-offer>form.offer-creation-form {
   padding: 0 20px;
 }
 
-section.add-offer>form.offer-creation-form textarea {
+section.add-offer > form.offer-creation-form textarea {
   font-family: "Heebo", sans-serif;
   font-size: 1.5rem;
   height: 200px;
   padding: 10px;
 }
 
-section.add-offer>form.offer-creation-form div.category-box {
+section.add-offer > form.offer-creation-form div.category-box {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -632,7 +638,7 @@ section.add-offer>form.offer-creation-form div.category-box {
   padding-bottom: 10px;
 }
 
-section.add-offer>form.offer-creation-form div.imgs-wrapper {
+section.add-offer > form.offer-creation-form div.imgs-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -641,7 +647,7 @@ section.add-offer>form.offer-creation-form div.imgs-wrapper {
   flex-wrap: wrap;
 }
 
-section.add-offer>form.offer-creation-form input {
+section.add-offer > form.offer-creation-form input {
   font-size: 1.5rem;
   padding: 2px 20px;
   margin: 0 auto;
@@ -649,15 +655,15 @@ section.add-offer>form.offer-creation-form input {
   border: none;
 }
 
-section.add-offer>form.offer-creation-form input.title-input {
+section.add-offer > form.offer-creation-form input.title-input {
   width: 350px;
 }
 
-section.add-offer>form.offer-creation-form input[type="file"] {
+section.add-offer > form.offer-creation-form input[type="file"] {
   display: none;
 }
 
-section.add-offer>form.offer-creation-form input.submit-btn {
+section.add-offer > form.offer-creation-form input.submit-btn {
   width: 120px;
   height: 60px;
   border-radius: 8px;
@@ -667,11 +673,11 @@ section.add-offer>form.offer-creation-form input.submit-btn {
   transition: 0.3s;
 }
 
-section.add-offer>form.offer-creation-form input.submit-btn:hover {
+section.add-offer > form.offer-creation-form input.submit-btn:hover {
   background-color: #fff;
 }
 
-section.add-offer>form.offer-creation-form label.cat-label {
+section.add-offer > form.offer-creation-form label.cat-label {
   position: relative;
   width: 70px;
   height: 70px;
@@ -679,7 +685,7 @@ section.add-offer>form.offer-creation-form label.cat-label {
   border-radius: 50%;
 }
 
-section.add-offer>form.offer-creation-form label.img-label {
+section.add-offer > form.offer-creation-form label.img-label {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -696,20 +702,20 @@ section.add-offer>form.offer-creation-form label.img-label {
   transition: 0.3s;
 }
 
-section.add-offer>form.offer-creation-form label.img-label:hover {
+section.add-offer > form.offer-creation-form label.img-label:hover {
   opacity: 1;
 }
 
-section.add-offer>form.offer-creation-form label.img-label.main {
+section.add-offer > form.offer-creation-form label.img-label.main {
   background-color: #ffe082;
   color: #7986cb;
 }
 
-section.add-offer>form.offer-creation-form label.img-label.main>i {
+section.add-offer > form.offer-creation-form label.img-label.main > i {
   color: #7986cb;
 }
 
-section.add-offer>form.offer-creation-form label.cat-label>i {
+section.add-offer > form.offer-creation-form label.cat-label > i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -718,7 +724,7 @@ section.add-offer>form.offer-creation-form label.cat-label>i {
   color: #fff;
 }
 
-section.add-offer>form.offer-creation-form p {
+section.add-offer > form.offer-creation-form p {
   text-align: center;
   font-size: 3rem;
   padding: 10px 20px;
@@ -818,7 +824,7 @@ aside div.form {
   padding: 20px;
 }
 
-aside>img {
+aside > img {
   position: absolute;
   top: -2px;
   width: 10%;
@@ -847,7 +853,7 @@ aside div.form input {
   border-radius: 4px;
 }
 
-aside div.form div.cat-logo>i {
+aside div.form div.cat-logo > i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -863,7 +869,7 @@ aside div.form div.condition-box {
   justify-items: center;
 }
 
-aside div.form div.condition-box>label {
+aside div.form div.condition-box > label {
   padding: 10px;
   background-color: #ff8a65;
   font-weight: 300;
@@ -887,6 +893,167 @@ aside div.form button {
 
 aside div.form button:hover {
   opacity: 1;
+}
+
+/*ENDLESS PAGE*/
+
+main.infinite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+main.infinite div.offers-wrap {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 80%;
+  height: 100%;
+  background: #ff8a65;
+}
+
+main.infinite div.offers-wrap div.offer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background: #7986cb;
+  border-radius: 6px;
+}
+
+main.infinite div.offers-wrap div.offer div.img-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  overflow: hidden;
+}
+
+main.infinite div.offers-wrap div.offer div.img-box > img {
+  height: 60%;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+  padding: 10px 20px;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box h1.title {
+  font-size: 2.5rem;
+  color: #ffe082;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box p.description {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  text-align: justify;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box p.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff8a65;
+  text-decoration: underline;
+  letter-spacing: 1px;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box p.localisation {
+  position: absolute;
+  left: 20px;
+  bottom: 40px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box p.date {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box button {
+  width: 80px;
+  height: 35px;
+  border-style: none;
+  background-color: #fff;
+  text-transform: uppercase;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  color: #7986cb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+main.infinite div.offers-wrap div.offer div.offer-box button:hover {
+  background-color: #ff8a65;
+  color: #fff;
+}
+
+main div.offer-filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 70px;
+  background-color: #ffe082;
+  border-radius: 4px;
+  margin: 20px 0 0 0;
+  font-family: "Heebo", sans-serif;
+}
+
+main div.offer-filter p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7986cb;
+}
+
+main select {
+  font-family: "Heebo", sans-serif;
+  border-style: none;
+  text-align: center;
+  padding: 2px;
+}
+
+/*SCROLLBAR*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ff8a65;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #bcc2e5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7986cb;
 }
 
 /*ANIMATIONS*/
