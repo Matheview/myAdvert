@@ -1,24 +1,58 @@
 const selectedOption = document.getElementById("selected-option");
 const filter = document.getElementById("sort");
+var toSort = document.getElementById('just-check').children;
+toSort = Array.prototype.slice.call(toSort, 0);
+
 
 /* Tu masz wykrywanie zmiany stanu selecta filtra :D */
 
-
 const checkFilterValue = () => {
     if (filter.value === "newest") {
-        console.log("nowe oferty");
+      toSort.sort(function(a, b) {
+          return (Date.parse( $(a).attr('data-offer')) < Date.parse( $(b).attr('data-offer'))) ? 1 : -1;
+      });
+      var parent = document.getElementById('just-check');
+      parent.innerHTML = "";
+
+      for(var i = 0, l = toSort.length; i < l; i++) {
+          parent.appendChild(toSort[i]);
+      }
     }
 
     else if (filter.value === "oldest") {
-        console.log("stare oferty");
+      toSort.sort(function(a, b) {
+          return (Date.parse( $(a).attr('data-offer')) > Date.parse( $(b).attr('data-offer'))) ? 1 : -1;
+      });
+      var parent = document.getElementById('just-check');
+      parent.innerHTML = "";
+
+      for(var i = 0, l = toSort.length; i < l; i++) {
+          parent.appendChild(toSort[i]);
+      }
     }
 
     else if (filter.value === "highprice") {
-        console.log("ceny od najwyższej");
+      toSort.sort(function(a, b) {
+          return (parseInt( $(a).attr('price-offer')) < parseInt( $(b).attr('price-offer'))) ? 1 : -1;
+      });
+      var parent = document.getElementById('just-check');
+      parent.innerHTML = "";
+
+      for(var i = 0, l = toSort.length; i < l; i++) {
+          parent.appendChild(toSort[i]);
+      }
     }
 
     else if (filter.value === "lowprice") {
-        console.log("ceny od najniższej");
+      toSort.sort(function(a, b) {
+          return (parseInt( $(a).attr('price-offer')) > parseInt( $(b).attr('price-offer'))) ? 1 : -1;
+      });
+      var parent = document.getElementById('just-check');
+      parent.innerHTML = "";
+
+      for(var i = 0, l = toSort.length; i < l; i++) {
+          parent.appendChild(toSort[i]);
+      }
     }
 
     else {
@@ -26,3 +60,7 @@ const checkFilterValue = () => {
     }
 
 }
+
+function sortoffer(a, b) {
+        return a.className < b.className;
+  }

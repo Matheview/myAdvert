@@ -48,44 +48,209 @@ function login(){
   pg_close($conn);
 }
 
-function show_automotive_all() {
+function show_automotive_all($words) {
   $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
-  if (!pg_connection_busy($conn)) {
-    $query = pg_query($conn, "WITH i AS(SELECT concat('offers_picture/automotive/', offer_id, '/', picture_name) file,
-			     ROW_NUMBER() OVER(PARTITION BY p.offer_id ORDER BY p.picture_id ASC) as queue, p.offer_id
-		  FROM offer_automotive.pictures p)
-      SELECT i.file, desc_short, concat(regexp_replace(SUBSTRING(desc_long, 1, 250), '\r|\n', ' ', 'g'), '...') as desc_long, u.user_city as city, price, oa.created_at
-      	FROM offer_automotive.offers oa
-      	INNER JOIN users u ON oa.user_id=u.user_id, i
-      	WHERE i.queue=1 AND i.offer_id=oa.offer_id
-      	ORDER BY oa.offer_id DESC;");
+  if($words == NULL) {
+    $query = pg_query($conn, "SELECT * FROM offer_automotive.show_offers('')");
+  }
+  else if (!pg_connection_busy($conn)) {
+    $query = pg_query($conn, "SELECT * FROM offer_automotive.show_offers('.$words.')");
   }
   $result = pg_fetch_all($query);
+  echo('<div class="offer-filter">
+        <p>Sort</p>
+       <select name="sort-offers" id="sort" onchange="checkFilterValue()">
+         <option selected value="newest" id="selected-option">newest offers</option>
+         <option value="oldest" id="oldest-option">older offers</option>
+         <option value="highprice" id="highprice-option">from the most expensive</option>
+         <option value="lowprice" id="lowprice-option">from the cheapest</option>
+       </select>
+      </div>
+      <div class="offers-wrap" id="just-check" style="display: inline-block;">');
   foreach($result as $row) {
-    echo('<div class="offer">
+    $offerlink = "'automotive.php?offer_id=".$row['tab_id']."';";
+    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
         <div class="img-box">
-          <img src="'.$row['file'].'" alt="" />
+          <img src="'.$row['tab_image'].'" alt="" />
         </div>
         <div class="offer-box">
           <div class="offer-title">
-            <h1 class="title">'.$row['desc_short'].'</h1>
+            <h1 class="title">'.$row['tab_desc_short'].'</h1>
           </div>
           <div class="offer-description">
-            <p class="description">'.$row['desc_long'].'</p>
+            <p class="description">'.$row['tab_desc_long'].'</p>
           </div>
           <div class="offer-price">
-            <p class="price">'.$row['price'].'</p>
+            <p class="price">'.$row['tab_price'].'</p>
           </div>
           <div class="offer-localisation">
-            <p class="localisation">'.$row['city'].'</p>
+            <p class="localisation">'.$row['tab_city'].'</p>
           </div>
           <div class="offer-date">
-            <p class="date">'.$row['created_at'].'</p>
+            <p class="date">'.$row['tab_created_at'].'</p>
           </div>
-          <button>Show</button>
+          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
         </div>
       </div>');
     }
+    echo('</div>');
+}
+
+function show_clothes_all($words) {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  if($words == NULL) {
+    $query = pg_query($conn, "SELECT * FROM offer_clothes.show_offers('')");
+  }
+  else if (!pg_connection_busy($conn)) {
+    $query = pg_query($conn, "SELECT * FROM offer_clothes.show_offers('.$words.')");
+  }
+  $result = pg_fetch_all($query);
+  echo('<div class="offer-filter">
+        <p>Sort</p>
+       <select name="sort-offers" id="sort" onchange="checkFilterValue()">
+         <option selected value="newest" id="selected-option">newest offers</option>
+         <option value="oldest" id="oldest-option">older offers</option>
+         <option value="highprice" id="highprice-option">from the most expensive</option>
+         <option value="lowprice" id="lowprice-option">from the cheapest</option>
+       </select>
+      </div>
+      <div class="offers-wrap" id="just-check" style="display: inline-block;">');
+  foreach($result as $row) {
+    $offerlink = "'clothes.php?offer_id=".$row['tab_id']."';";
+    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+        <div class="img-box">
+          <img src="'.$row['tab_image'].'" alt="" />
+        </div>
+        <div class="offer-box">
+          <div class="offer-title">
+            <h1 class="title">'.$row['tab_desc_short'].'</h1>
+          </div>
+          <div class="offer-description">
+            <p class="description">'.$row['tab_desc_long'].'</p>
+          </div>
+          <div class="offer-price">
+            <p class="price">'.$row['tab_price'].'</p>
+          </div>
+          <div class="offer-localisation">
+            <p class="localisation">'.$row['tab_city'].'</p>
+          </div>
+          <div class="offer-date">
+            <p class="date">'.$row['tab_created_at'].'</p>
+          </div>
+          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
+        </div>
+      </div>');
+    }
+    echo('</div>');
+}
+
+function show_electronics_all($words) {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  if($words == NULL) {
+    $query = pg_query($conn, "SELECT * FROM offer_electronics.show_offers('')");
+  }
+  else if (!pg_connection_busy($conn)) {
+    $query = pg_query($conn, "SELECT * FROM offer_electronics.show_offers('.$words.')");
+  }
+  $result = pg_fetch_all($query);
+  echo('<div class="offer-filter">
+        <p>Sort</p>
+       <select name="sort-offers" id="sort" onchange="checkFilterValue()">
+         <option selected value="newest" id="selected-option">newest offers</option>
+         <option value="oldest" id="oldest-option">older offers</option>
+         <option value="highprice" id="highprice-option">from the most expensive</option>
+         <option value="lowprice" id="lowprice-option">from the cheapest</option>
+       </select>
+      </div>
+      <div class="offers-wrap" id="just-check" style="display: inline-block;">');
+  foreach($result as $row) {
+    $offerlink = "'electronics.php?offer_id=".$row['tab_id']."';";
+    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+        <div class="img-box">
+          <img src="'.$row['tab_image'].'" alt="" />
+        </div>
+        <div class="offer-box">
+          <div class="offer-title">
+            <h1 class="title">'.$row['tab_desc_short'].'</h1>
+          </div>
+          <div class="offer-description">
+            <p class="description">'.$row['tab_desc_long'].'</p>
+          </div>
+          <div class="offer-price">
+            <p class="price">'.$row['tab_price'].'</p>
+          </div>
+          <div class="offer-localisation">
+            <p class="localisation">'.$row['tab_city'].'</p>
+          </div>
+          <div class="offer-date">
+            <p class="date">'.$row['tab_created_at'].'</p>
+          </div>
+          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
+        </div>
+      </div>');
+    }
+    echo('</div>');
+}
+
+function show_music_accessories_all($words) {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  if($words == NULL) {
+    $query = pg_query($conn, "SELECT * FROM offer_music_accessories.show_offers('')");
+  }
+  else if (!pg_connection_busy($conn)) {
+    $query = pg_query($conn, "SELECT * FROM offer_music_accessories.show_offers('.$words.')");
+  }
+  $result = pg_fetch_all($query);
+  echo('<div class="offer-filter">
+        <p>Sort</p>
+       <select name="sort-offers" id="sort" onchange="checkFilterValue()">
+         <option selected value="newest" id="selected-option">newest offers</option>
+         <option value="oldest" id="oldest-option">older offers</option>
+         <option value="highprice" id="highprice-option">from the most expensive</option>
+         <option value="lowprice" id="lowprice-option">from the cheapest</option>
+       </select>
+      </div>
+      <div class="offers-wrap" id="just-check" style="display: inline-block;">');
+  foreach($result as $row) {
+    $offerlink = "'music.php?offer_id=".$row['tab_id']."';";
+    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+        <div class="img-box">
+          <img src="'.$row['tab_image'].'" alt="" />
+        </div>
+        <div class="offer-box">
+          <div class="offer-title">
+            <h1 class="title">'.$row['tab_desc_short'].'</h1>
+          </div>
+          <div class="offer-description">
+            <p class="description">'.$row['tab_desc_long'].'</p>
+          </div>
+          <div class="offer-price">
+            <p class="price">'.$row['tab_price'].'</p>
+          </div>
+          <div class="offer-localisation">
+            <p class="localisation">'.$row['tab_city'].'</p>
+          </div>
+          <div class="offer-date">
+            <p class="date">'.$row['tab_created_at'].'</p>
+          </div>
+          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
+        </div>
+      </div>');
+    }
+    echo('</div>');
+}
+
+function show_offer_automotive($offer_id) {
+
+}
+function show_offer_clothes($offer_id) {
+
+}
+function show_offer_electronics($offer_id) {
+
+}
+function show_offer_music_accessories($offer_id) {
+
 }
 
 function add_offer() {

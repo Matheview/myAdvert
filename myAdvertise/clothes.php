@@ -39,18 +39,18 @@
         <img src="imgs/billboard.png" alt="logo" class="header-logo" />
       </header>
       <main style="background: #ff8a65" class="infinite">
-      <div class="offer-filter">
-        <p>Sort</p>
-       <select name="sort-offers" id="sort" onchange="checkFilterValue()">
-         <option selected value="newest" id="selected-option">newest offers</option>
-         <option value="oldest" id="oldest-option">older offers</option>
-         <option value="highprice" id="highprice-option">from the most expensive</option>
-         <option value="lowprice" id="lowprice-option">from the cheapest</option>
-       </select>
-      </div>
-       <div class="offers-wrap" style="display: inline-block;">
-        <?php show_clothes_all()?>
-       </div>
+       <?php
+       if(isset($_GET['offer_id'])){
+           show_offer_clothes($_GET['offer_id']);
+       }
+       else {
+         if(isset($_GET['search'])) {
+           show_clothes_all($_GET['search']);
+         }
+         elseif(!isset($_GET['search'])) {
+           show_clothes_all(NULL);
+         }
+       }?>
       </main>
       <script
   src="https://code.jquery.com/jquery-3.4.1.js"
