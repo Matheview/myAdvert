@@ -81,7 +81,7 @@ function show_automotive_all($words) {
             <p class="description">'.$row['tab_desc_long'].'</p>
           </div>
           <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'</p>
+            <p class="price">'.$row['tab_price'].'PLN</p>
           </div>
           <div class="offer-localisation">
             <p class="localisation">'.$row['tab_city'].'</p>
@@ -93,7 +93,7 @@ function show_automotive_all($words) {
         </div>
       </div>');
     }
-    echo('</div>');
+    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_clothes_all($words) {
@@ -129,7 +129,7 @@ function show_clothes_all($words) {
             <p class="description">'.$row['tab_desc_long'].'</p>
           </div>
           <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'</p>
+            <p class="price">'.$row['tab_price'].'PLN</p>
           </div>
           <div class="offer-localisation">
             <p class="localisation">'.$row['tab_city'].'</p>
@@ -141,7 +141,7 @@ function show_clothes_all($words) {
         </div>
       </div>');
     }
-    echo('</div>');
+    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_electronics_all($words) {
@@ -177,7 +177,7 @@ function show_electronics_all($words) {
             <p class="description">'.$row['tab_desc_long'].'</p>
           </div>
           <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'</p>
+            <p class="price">'.$row['tab_price'].'PLN</p>
           </div>
           <div class="offer-localisation">
             <p class="localisation">'.$row['tab_city'].'</p>
@@ -189,7 +189,7 @@ function show_electronics_all($words) {
         </div>
       </div>');
     }
-    echo('</div>');
+    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_music_accessories_all($words) {
@@ -225,7 +225,7 @@ function show_music_accessories_all($words) {
             <p class="description">'.$row['tab_desc_long'].'</p>
           </div>
           <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'</p>
+            <p class="price">'.$row['tab_price'].'PLN</p>
           </div>
           <div class="offer-localisation">
             <p class="localisation">'.$row['tab_city'].'</p>
@@ -237,21 +237,340 @@ function show_music_accessories_all($words) {
         </div>
       </div>');
     }
-    echo('</div>');
+    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_offer_automotive($offer_id) {
-
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "SELECT * FROM offer_automotive.show_offer_info(".$offer_id.")");
+  $result = pg_fetch_all($query);
+  $offerlink = "'automotive.php'";
+  if (pg_num_rows($query) == 0) {
+    echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+    <button onclick="location.href='.$offerlink.'" type="button">return to automotive offers</button>');
+  }
+  else {
+    foreach($result as $row) {
+      echo('<section class="left">
+          <div class="title">
+            <h1 class="title">'.$row['desc_short'].'</h1>
+          </div>
+          <div class="slider">');
+      $query = pg_query($conn, "SELECT * FROM offer_automotive.get_images(".$offer_id.")");
+      $pictures = pg_fetch_all($query);
+      echo('<div class="owl-carousel">');
+      foreach($pictures as $picture) {
+        echo('<div class="offer-photo"><img src="'.$picture['image'].'" alt=""></div>');
+      }
+      echo('</div>
+          </div>
+          <div class="full-description">
+            <p class="full-description">
+              '.$row['desc_long'].'
+            </p>
+          </div>
+        </section>
+        <section class="right">
+          <div class="brand">
+            <p class="brand">
+              '.$row['brand'].'
+            </p>
+          </div>
+          <div class="model">
+            <p class="model">
+              '.$row['model'].'
+            </p>
+          </div>
+          <div class="year">
+            <p class="year">
+              '.$row['year'].'
+            </p>
+          </div>
+          <div class="mileage">
+            <div class="mileage">
+              '.$row['mileage'].'
+            </div>
+          </div>
+          <div class="engine">
+            <p class="engine">
+              '.$row['engine'].'
+            </p>
+          </div>
+          <div class="condition">
+            <p class="condition">
+              '.$row['contition'].'
+            </p>
+          </div>
+          <div class="price">
+            <p class="price">
+              '.$row['price'].'PLN
+            </p>
+          </div>
+          <div class="user-name">
+            <p class="user-name">
+                '.$row['user_name'].'
+            </p>
+          </div>
+          <div class="phone-number">
+            <p class="phone-number">
+                '.$row['phone_num'].'
+            </p>
+          </div>
+          <div class="localisation">
+            <p class="localisation">
+              '.$row['city'].'
+            </p>
+          </div>
+          <div class="date">
+            <p class="date">
+              '.$row['created_at'].'
+            </p>
+          </div>
+        </section>');
+      }
+    }
 }
-function show_offer_clothes($offer_id) {
 
+function show_offer_clothes($offer_id) {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "SELECT * FROM offer_clothes.show_offer_info(".$offer_id.")");
+  $result = pg_fetch_all($query);
+  $offerlink = "'clothes.php'";
+  if (pg_num_rows($query) == 0) {
+    echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+    <button onclick="location.href='.$offerlink.'" type="button">return to clothes offers</button>');
+  }
+  else {
+    foreach($result as $row) {
+      echo('<section class="left">
+          <div class="title">
+            <h1 class="title">'.$row['desc_short'].'</h1>
+          </div>
+          <div class="slider">');
+      $query = pg_query($conn, "SELECT * FROM offer_clothes.get_images(".$offer_id.")");
+      $pictures = pg_fetch_all($query);
+      echo('<div class="owl-carousel">');
+      foreach($pictures as $picture) {
+        echo('<div class="offer-photo"><img src="'.$picture['image'].'" alt=""></div>');
+      }
+      echo('</div>
+          </div>
+          <div class="full-description">
+            <p class="full-description">
+              '.$row['desc_long'].'
+            </p>
+          </div>
+        </section>
+        <section class="right">
+          <div class="brand">
+            <p class="brand">
+              '.$row['brand'].'
+            </p>
+          </div>
+          <div class="colour">
+          <p class="colour">
+            '.$row['color'].'
+          </p>
+          </div>
+          <div class="size">
+            <p class="size">
+              '.$row['size'].'
+            </p>
+          </div>
+          <div class="sex">
+            <p class="sex">
+              '.$row['sex'].'
+            </p>
+          </div>
+          <div class="condition">
+            <p class="condition">
+              '.$row['contition'].'
+            </p>
+          </div>
+          <div class="price">
+            <p class="price">
+              '.$row['price'].'PLN
+            </p>
+          </div>
+          <div class="user-name">
+            <p class="user-name">
+                '.$row['user_name'].'
+            </p>
+          </div>
+          <div class="phone-number">
+            <p class="phone-number">
+                '.$row['phone_num'].'
+            </p>
+          </div>
+          <div class="localisation">
+            <p class="localisation">
+              '.$row['city'].'
+            </p>
+          </div>
+          <div class="date">
+            <p class="date">
+              '.$row['created_at'].'
+            </p>
+          </div>
+        </section>');
+      }
+    }
 }
 function show_offer_electronics($offer_id) {
-
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "SELECT * FROM offer_electronics.show_offer_info(".$offer_id.")");
+  $result = pg_fetch_all($query);
+  $offerlink = "'electronics.php'";
+  if (pg_num_rows($query) == 0) {
+    echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+    <button onclick="location.href='.$offerlink.'" type="button">return to electronics offers</button>');
+  }
+  else {
+    foreach($result as $row) {
+      echo('<section class="left">
+          <div class="title">
+            <h1 class="title">'.$row['desc_short'].'</h1>
+          </div>
+          <div class="slider">');
+      $query = pg_query($conn, "SELECT * FROM offer_electronics.get_images(".$offer_id.")");
+      $pictures = pg_fetch_all($query);
+      echo('<div class="owl-carousel">');
+      foreach($pictures as $picture) {
+        echo('<div class="offer-photo"><img src="'.$picture['image'].'" alt=""></div>');
+      }
+      echo('</div>
+          </div>
+          <div class="full-description">
+            <p class="full-description">
+              '.$row['desc_long'].'
+            </p>
+          </div>
+        </section>
+        <section class="right">
+          <div class="brand">
+            <p class="brand">
+              '.$row['brand'].'
+            </p>
+          </div>
+          <div class="model">
+          <p class="model">
+            '.$row['model'].'
+          </p>
+          </div>
+          <div class="condition">
+            <p class="condition">
+              '.$row['contition'].'
+            </p>
+          </div>
+          <div class="price">
+            <p class="price">
+              '.$row['price'].'PLN
+            </p>
+          </div>
+          <div class="user-name">
+            <p class="user-name">
+                '.$row['user_name'].'
+            </p>
+          </div>
+          <div class="phone-number">
+            <p class="phone-number">
+                '.$row['phone_num'].'
+            </p>
+          </div>
+          <div class="localisation">
+            <p class="localisation">
+              '.$row['city'].'
+            </p>
+          </div>
+          <div class="date">
+            <p class="date">
+              '.$row['created_at'].'
+            </p>
+          </div>
+        </section>');
+      }
+    }
 }
 function show_offer_music_accessories($offer_id) {
-
-}
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "SELECT * FROM offer_music_accessories.show_offer_info(".$offer_id.")");
+  $result = pg_fetch_all($query);
+  $offerlink = "'music.php'";
+  if (pg_num_rows($query) == 0) {
+    echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+    <button onclick="location.href='.$offerlink.'" type="button">return to music accessories offers</button>');
+  }
+  else {
+    foreach($result as $row) {
+      echo('<section class="left">
+          <div class="title">
+            <h1 class="title">'.$row['desc_short'].'</h1>
+          </div>
+          <div class="slider">');
+      $query = pg_query($conn, "SELECT * FROM offer_music_accessories.get_images(".$offer_id.")");
+      $pictures = pg_fetch_all($query);
+      echo('<div class="owl-carousel">');
+      foreach($pictures as $picture) {
+        echo('<div class="offer-photo"><img src="'.$picture['image'].'" alt=""></div>');
+      }
+      echo('</div>
+          </div>
+          <div class="full-description">
+            <p class="full-description">
+              '.$row['desc_long'].'
+            </p>
+          </div>
+        </section>
+        <section class="right">
+          <div class="type">
+            <p class="type">
+              '.$row['type'].'
+            </p>
+          </div>
+          <div class="brand">
+            <p class="brand">
+              '.$row['brand'].'
+            </p>
+          </div>
+          <div class="model">
+          <p class="model">
+            '.$row['model'].'
+          </p>
+          </div>
+          <div class="condition">
+            <p class="condition">
+              '.$row['contition'].'
+            </p>
+          </div>
+          <div class="price">
+            <p class="price">
+              '.$row['price'].'PLN
+            </p>
+          </div>
+          <div class="user-name">
+            <p class="user-name">
+                '.$row['user_name'].'
+            </p>
+          </div>
+          <div class="phone-number">
+            <p class="phone-number">
+                '.$row['phone_num'].'
+            </p>
+          </div>
+          <div class="localisation">
+            <p class="localisation">
+              '.$row['city'].'
+            </p>
+          </div>
+          <div class="date">
+            <p class="date">
+              '.$row['created_at'].'
+            </p>
+          </div>
+        </section>');
+      }
+    }
+  }
 
 function add_offer() {
   $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");

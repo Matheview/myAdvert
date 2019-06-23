@@ -57,6 +57,5 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
         <script src="scripts/index.js"></script>
-        <script src="scripts/offersList.js"></script>
   </body>
 </html>
