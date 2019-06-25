@@ -65,35 +65,48 @@ function show_automotive_all($words) {
          <option value="highprice" id="highprice-option">from the most expensive</option>
          <option value="lowprice" id="lowprice-option">from the cheapest</option>
        </select>
+       </div>
+       <div class="offer-filter">
+       <p>Find offer</p>
+      <form method="GET" actions="automotive.php">
+      <input type="text" name="search">
+      <button type="submit">Search</button>
       </div>
       <div class="offers-wrap" id="just-check" style="display: inline-block;">');
-  foreach($result as $row) {
-    $offerlink = "'automotive.php?offer_id=".$row['tab_id']."';";
-    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
-        <div class="img-box">
-          <img src="'.$row['tab_image'].'" alt="" />
-        </div>
-        <div class="offer-box">
-          <div class="offer-title">
-            <h1 class="title">'.$row['tab_desc_short'].'</h1>
-          </div>
-          <div class="offer-description">
-            <p class="description">'.$row['tab_desc_long'].'</p>
-          </div>
-          <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'PLN</p>
-          </div>
-          <div class="offer-localisation">
-            <p class="localisation">'.$row['tab_city'].'</p>
-          </div>
-          <div class="offer-date">
-            <p class="date">'.$row['tab_created_at'].'</p>
-          </div>
-          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
-        </div>
-      </div>');
+    if (pg_num_rows($query) == 0) {
+      $offerlink = "'automotive.php'";
+      echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+      <button onclick="location.href='.$offerlink.'" type="button">return to automotive offers</button>');
     }
-    echo('</div><script src="scripts/offersList.js"></script>');
+    else {
+      foreach($result as $row) {
+      $offerlink = "'automotive.php?offer_id=".$row['tab_id']."';";
+      echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+          <div class="img-box">
+            <img src="'.$row['tab_image'].'" alt="" />
+          </div>
+          <div class="offer-box">
+            <div class="offer-title">
+              <h1 class="title">'.$row['tab_desc_short'].'</h1>
+            </div>
+            <div class="offer-description">
+              <p class="description">'.$row['tab_desc_long'].'</p>
+            </div>
+            <div class="offer-price">
+              <p class="price">'.$row['tab_price'].'PLN</p>
+            </div>
+            <div class="offer-localisation">
+              <p class="localisation">'.$row['tab_city'].'</p>
+            </div>
+            <div class="offer-date">
+              <p class="date">'.$row['tab_created_at'].'</p>
+            </div>
+            <button onclick="location.href='.$offerlink.'" type="button">Show</button>
+          </div>
+        </div>');
+      }
+      echo('</div><script src="scripts/offersList.js"></script>');
+    }
 }
 
 function show_clothes_all($words) {
@@ -113,35 +126,48 @@ function show_clothes_all($words) {
          <option value="highprice" id="highprice-option">from the most expensive</option>
          <option value="lowprice" id="lowprice-option">from the cheapest</option>
        </select>
+       </div>
+       <div class="offer-filter">
+       <p>Find offer</p>
+      <form method="GET" actions="clothes.php">
+      <input type="text" name="search">
+      <button type="submit">Search</button>
       </div>
       <div class="offers-wrap" id="just-check" style="display: inline-block;">');
-  foreach($result as $row) {
-    $offerlink = "'clothes.php?offer_id=".$row['tab_id']."';";
-    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
-        <div class="img-box">
-          <img src="'.$row['tab_image'].'" alt="" />
-        </div>
-        <div class="offer-box">
-          <div class="offer-title">
-            <h1 class="title">'.$row['tab_desc_short'].'</h1>
+      if (pg_num_rows($query) == 0) {
+        $offerlink = "'clothes.php'";
+        echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+        <button onclick="location.href='.$offerlink.'" type="button">return to clothes offers</button>');
+      }
+      else {
+    foreach($result as $row) {
+      $offerlink = "'clothes.php?offer_id=".$row['tab_id']."';";
+      echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+          <div class="img-box">
+            <img src="'.$row['tab_image'].'" alt="" />
           </div>
-          <div class="offer-description">
-            <p class="description">'.$row['tab_desc_long'].'</p>
+          <div class="offer-box">
+            <div class="offer-title">
+              <h1 class="title">'.$row['tab_desc_short'].'</h1>
+            </div>
+            <div class="offer-description">
+              <p class="description">'.$row['tab_desc_long'].'</p>
+            </div>
+            <div class="offer-price">
+              <p class="price">'.$row['tab_price'].'PLN</p>
+            </div>
+            <div class="offer-localisation">
+              <p class="localisation">'.$row['tab_city'].'</p>
+            </div>
+            <div class="offer-date">
+              <p class="date">'.$row['tab_created_at'].'</p>
+            </div>
+            <button onclick="location.href='.$offerlink.'" type="button">Show</button>
           </div>
-          <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'PLN</p>
-          </div>
-          <div class="offer-localisation">
-            <p class="localisation">'.$row['tab_city'].'</p>
-          </div>
-          <div class="offer-date">
-            <p class="date">'.$row['tab_created_at'].'</p>
-          </div>
-          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
-        </div>
-      </div>');
+        </div>');
+      }
+      echo('</div><script src="scripts/offersList.js"></script>');
     }
-    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_electronics_all($words) {
@@ -161,35 +187,48 @@ function show_electronics_all($words) {
          <option value="highprice" id="highprice-option">from the most expensive</option>
          <option value="lowprice" id="lowprice-option">from the cheapest</option>
        </select>
+       </div>
+       <div class="offer-filter">
+       <p>Find offer</p>
+      <form method="GET" actions="electronics.php">
+      <input type="text" name="search">
+      <button type="submit">Search</button>
       </div>
       <div class="offers-wrap" id="just-check" style="display: inline-block;">');
-  foreach($result as $row) {
-    $offerlink = "'electronics.php?offer_id=".$row['tab_id']."';";
-    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
-        <div class="img-box">
-          <img src="'.$row['tab_image'].'" alt="" />
-        </div>
-        <div class="offer-box">
-          <div class="offer-title">
-            <h1 class="title">'.$row['tab_desc_short'].'</h1>
+  if (pg_num_rows($query) == 0) {
+    $offerlink = "'electronics.php'";
+    echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+    <button onclick="location.href='.$offerlink.'" type="button">return to electronics offers</button>');
+  }
+  else {
+    foreach($result as $row) {
+      $offerlink = "'electronics.php?offer_id=".$row['tab_id']."';";
+      echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+          <div class="img-box">
+            <img src="'.$row['tab_image'].'" alt="" />
           </div>
-          <div class="offer-description">
-            <p class="description">'.$row['tab_desc_long'].'</p>
+          <div class="offer-box">
+            <div class="offer-title">
+              <h1 class="title">'.$row['tab_desc_short'].'</h1>
+            </div>
+            <div class="offer-description">
+              <p class="description">'.$row['tab_desc_long'].'</p>
+            </div>
+            <div class="offer-price">
+              <p class="price">'.$row['tab_price'].'PLN</p>
+            </div>
+            <div class="offer-localisation">
+              <p class="localisation">'.$row['tab_city'].'</p>
+            </div>
+            <div class="offer-date">
+              <p class="date">'.$row['tab_created_at'].'</p>
+            </div>
+            <button onclick="location.href='.$offerlink.'" type="button">Show</button>
           </div>
-          <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'PLN</p>
-          </div>
-          <div class="offer-localisation">
-            <p class="localisation">'.$row['tab_city'].'</p>
-          </div>
-          <div class="offer-date">
-            <p class="date">'.$row['tab_created_at'].'</p>
-          </div>
-          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
-        </div>
-      </div>');
+        </div>');
+      }
+      echo('</div><script src="scripts/offersList.js"></script>');
     }
-    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_music_accessories_all($words) {
@@ -209,35 +248,48 @@ function show_music_accessories_all($words) {
          <option value="highprice" id="highprice-option">from the most expensive</option>
          <option value="lowprice" id="lowprice-option">from the cheapest</option>
        </select>
+       </div>
+       <div class="offer-filter">
+       <p>Find offer</p>
+      <form method="GET" actions="music.php">
+      <input type="text" name="search">
+      <button type="submit">Search</button>
       </div>
       <div class="offers-wrap" id="just-check" style="display: inline-block;">');
-  foreach($result as $row) {
-    $offerlink = "'music.php?offer_id=".$row['tab_id']."';";
-    echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
-        <div class="img-box">
-          <img src="'.$row['tab_image'].'" alt="" />
-        </div>
-        <div class="offer-box">
-          <div class="offer-title">
-            <h1 class="title">'.$row['tab_desc_short'].'</h1>
+  if (pg_num_rows($query) == 0) {
+    $offerlink = "'music.php'";
+    echo('<div class="offer-not-found">Nie znaleziono wybranego ogłoszenia</div>
+    <button onclick="location.href='.$offerlink.'" type="button">return to music accessories offers</button>');
+  }
+  else {
+    foreach($result as $row) {
+      $offerlink = "'music.php?offer_id=".$row['tab_id']."';";
+      echo('<div class="offer" data-offer="'.$row['tab_created_at'].'" price-offer='.$row['tab_price'].'>
+          <div class="img-box">
+            <img src="'.$row['tab_image'].'" alt="" />
           </div>
-          <div class="offer-description">
-            <p class="description">'.$row['tab_desc_long'].'</p>
+          <div class="offer-box">
+            <div class="offer-title">
+              <h1 class="title">'.$row['tab_desc_short'].'</h1>
+            </div>
+            <div class="offer-description">
+              <p class="description">'.$row['tab_desc_long'].'</p>
+            </div>
+            <div class="offer-price">
+              <p class="price">'.$row['tab_price'].'PLN</p>
+            </div>
+            <div class="offer-localisation">
+              <p class="localisation">'.$row['tab_city'].'</p>
+            </div>
+            <div class="offer-date">
+              <p class="date">'.$row['tab_created_at'].'</p>
+            </div>
+            <button onclick="location.href='.$offerlink.'" type="button">Show</button>
           </div>
-          <div class="offer-price">
-            <p class="price">'.$row['tab_price'].'PLN</p>
-          </div>
-          <div class="offer-localisation">
-            <p class="localisation">'.$row['tab_city'].'</p>
-          </div>
-          <div class="offer-date">
-            <p class="date">'.$row['tab_created_at'].'</p>
-          </div>
-          <button onclick="location.href='.$offerlink.'" type="button">Show</button>
-        </div>
-      </div>');
+        </div>');
+      }
+      echo('</div><script src="scripts/offersList.js"></script>');
     }
-    echo('</div><script src="scripts/offersList.js"></script>');
 }
 
 function show_offer_automotive($offer_id) {
@@ -680,6 +732,23 @@ function add_offer() {
   pg_close($conn);
 }
 
+
+function get_user_offers($user_id) {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "select * FROM show_user_offers(".$user_id.")");
+  $result = pg_fetch_all($query);
+  foreach($result as $row){
+  echo('<section class="my-offers">
+      <div class="title">
+      <h1>'.$row['tab_desc_short'].'</h1>
+      </div>
+      <img src="'.$row['tab_image'].'" alt="">
+      <a class="" href="'.$row['tab_edit'].'">edit offer<i class="fas fa-edit"></i></a>
+       <a class="" href="'.$row['tab_delete'].'">delete offer<i class="fas fa-trash-alt"></i></a>
+       </section>');
+     }
+}
+
 function check_user($args) {
   if(isset($_SESSION['user_name'])) {
     echo('Hello '.$_SESSION['user_name'].'</p>
@@ -710,6 +779,67 @@ function check_user($args) {
   }
 }
 
+function delete_offer() {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "select offer_".$_GET['category'].".delete_offer(".$_GET['delete_offer'].", ".$_SESSION['user_id'].");");
+  $result = pg_fetch_row($query);
+  foreach($result as  $row){
+    echo($row."  ".$_SESSION['user_id']);
+    // if($row == 't') {
+    //   header('Location: account.php');
+    // }
+    // else {
+    //   header('Location: account.php');
+    // }
+  }
+  pg_close($conn);
+}
+
+function change_passwd() {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "select change_passwd(".$_SESSION['user_id'].", '".$_POST['current_passwd']."', '".$_POST['new_passwd']."', '".$_POST['repeat_new_passwd']."')");
+  $result = pg_fetch_row($query);
+  foreach($result as  $row){
+    if($row == 't') {
+      header('Location: account.php?change_passwd=true');
+    }
+    else {
+      header('Location: account.php?change_passwd=false');
+    }
+  }
+  pg_close($conn);
+}
+
+function change_number() {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "select change_phone_num(".$_SESSION['user_id'].", '".$_POST['current_phone']."', '".$_POST['new_phone']."')");
+  $result = pg_fetch_row($query);
+  foreach($result as  $row){
+    if($row == 't') {
+      header('Location: account.php?change_phone=true');
+    }
+    else {
+      header('Location: account.php?change_phone=false');
+    }
+  }
+  pg_close($conn);
+}
+
+function change_address() {
+  $conn = pg_connect($GLOBALS['connStr']) or die("Could not connect");
+  $query = pg_query($conn, "select change_address(".$_SESSION['user_id'].", '".$_POST['new_address']."')");
+  $result = pg_fetch_row($query);
+  foreach($result as  $row){
+    if($row == 't') {
+      header('Location: account.php?change_address=true');
+    }
+    else {
+      header('Location: account.php?change_address=false');
+    }
+  }
+  pg_close($conn);
+}
+
 if(isset($_POST['addoffer'])) {
   add_offer();
 }
@@ -719,6 +849,19 @@ if (isset($_POST['register'])) {
 }
 if (isset($_POST['login'])) {
   login();
+}
+
+if (isset($_POST['change_passwd'])) {
+  change_passwd();
+}
+if (isset($_POST['change_phone'])) {
+  change_number();
+}
+if (isset($_POST['change_address'])) {
+  change_address();
+}
+if (isset($_GET['delete_offer'])) {
+   delete_offer();
 }
 if (isset($_GET['logout'])) {
   session_unset();

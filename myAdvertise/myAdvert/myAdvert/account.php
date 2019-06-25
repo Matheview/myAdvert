@@ -41,40 +41,56 @@
       </header>
       <main class="account-info">
         <section class="password">
+
             <p>Change password:</p>
-            <form action="function.php">
-                <input type="password" placeholder="current password..." id="current-password">
-                <input type="password" placeholder="new password..." id="new-password">
-                <input type="password" placeholder="repeat new password..." id="r-new-password"> 
-                <button type="submit">change password</button>
+            <form method="POST" action="functions.php">
+                <input type="password" name="current_passwd" placeholder="current password..." id="current-password">
+                <input type="password" name="new_passwd" placeholder="new password..." id="new-password">
+                <input type="password" name="repeat_new_passwd" placeholder="repeat new password..." id="r-new-password">
+                <button type="submit" name="change_passwd">change password</button>
             </form>
+            <?php if(isset($_GET['change_passwd'])) {
+                if($_GET['change_passwd'] == 'true') {
+                    echo('&nbsp&nbspPassword changed correctly');
+                }
+                if($_GET['change_passwd'] == 'false') {
+                    echo('&nbsp&nbspPassword not changed!');
+                }
+                }?>
         </section>
         <section class="number">
             <p>Edit phone number:</p>
-            <form action="function.php">
-                <input type="text" placeholder="current number..." id="current-number">
-                <input type="text" placeholder="new number..." id="new-number">
-                <button type="submit">change number</button>
+            <form method="POST" action="functions.php">
+                <input type="text" name="current_phone" placeholder="current number..." id="current-number">
+                <input type="text" name="new_phone" placeholder="new number..." id="new-number">
+                <button type="submit" name="change_phone">change number</button>
             </form>
+            <?php if(isset($_GET['change_phone'])) {
+                if($_GET['change_phone'] == 'true') {
+                    echo('&nbsp&nbspPhone number changed correctly');
+                }
+                if($_GET['change_phone'] == 'false') {
+                    echo('&nbsp&nbspPhone number not changed!');
+                }
+                }?>
         </section>
         <section class="address">
             <p>Edit your address:</p>
-            <form action="function.php">
-                <input type="text" placeholder="new address..." id="new-address">
-                <button type="submit">change address</button>
+            <form method="POST" action="functions.php">
+                <input type="text" name="new_address" placeholder="new address..." id="new-address">
+                <button type="submit" name="change_address">change address</button>
             </form>
+            <?php if(isset($_GET['change_address'])) {
+                if($_GET['change_address'] == 'true') {
+                    echo('&nbsp&nbspAddress changed correctly');
+                }
+                if($_GET['change_address'] == 'false') {
+                    echo('&nbsp&nbspAddress not changed!');
+                }
+                }?>
         </section>
-        <section class="my-offers">
-            <p>My offers: </p>
-            <div class="unique-offer"></div>
-            <div class="title">
-                <h1>Sprzedam działkę</h1>
-                </div>
-                <img src="https://apollo-ireland.akamaized.net/v1/files/xkh4lyhlulzw-PL/image;s=1000x700" alt="">
-                <a class="" href="function.php">edit offer<i class="fas fa-edit"></i></a>
-                 <a class="" href="function.php">delete offer<i class="fas fa-trash-alt"></i></a>
-            </div>
-        </section>
+        <p>My offers: </p>
+            <?php get_user_offers($_SESSION['user_id']);?>
       </main>
       <script src="scripts/index.js"></script>
     </div>

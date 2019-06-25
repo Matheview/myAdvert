@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="owlcarousel/dist/assets/owl.carousel.css">
-     <link rel="stylesheet" href="owlcarousel/dist/assets/owl.theme.default.min.css">  
+     <link rel="stylesheet" href="owlcarousel/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
@@ -42,6 +42,16 @@
       </header>
       <main style="background: #ff8a65" class="infinite">
       <?php
+      if(isset($_GET['action']) && isset($_SESSION['user_id'])){
+         if (isset($_GET['action']) == 'delete') {
+           $offerlink = "'functions.php?delete_offer=".$_GET['offer_id']."&category=music_accessories'";
+           $offerlink2 = "'music.php'";
+           echo('<p>Are you sure to delete this offer?</p>
+             <button onclick="location.href='.$offerlink.'" type="button">YES</button>
+             <button onclick="location.href='.$offerlink2.'" type="button">NO</button>');
+         }
+         show_offer_music_accessories($_GET['offer_id']);
+     }
       if(isset($_GET['offer_id'])){
           show_offer_music_accessories($_GET['offer_id']);
       }

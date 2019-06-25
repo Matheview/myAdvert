@@ -571,7 +571,7 @@ RETURN QUERY SELECT automotive.* FROM (WITH i AS(SELECT concat('offers_picture/a
 SELECT CONCAT('automotive.php?offer_id=', oa.offer_id::bigint, '&action=delete') as delete, CONCAT('automotive.php?offer_id=', oa.offer_id::bigint, '&action=edit') as edit, i.file, desc_short, concat(regexp_replace(SUBSTRING(desc_long, 1, 250), '\r|\n', ' ', 'g'), '...'), u.user_city, price, oa.created_at
 	FROM offer_automotive.offers oa 
 	INNER JOIN users u ON oa.user_id=u.user_id, i
-	WHERE i.queue=1 AND i.offer_id=oa.offer_id AND oa.user_id=2) as automotive
+	WHERE i.queue=1 AND i.offer_id=oa.offer_id AND oa.user_id=$1) as automotive
 	UNION
 SELECT clothes.* FROM (WITH i AS(SELECT concat('offers_picture/clothes/', offer_id, '/', picture_name) file, 
 					 ROW_NUMBER() OVER(PARTITION BY p.offer_id ORDER BY p.picture_id ASC) as queue, p.offer_id
@@ -580,7 +580,7 @@ SELECT clothes.* FROM (WITH i AS(SELECT concat('offers_picture/clothes/', offer_
 		u.user_city::varchar, price::float8, oc.created_at::timestamp without time zone
 			FROM offer_clothes.offers oc 
 			INNER JOIN users u ON oc.user_id=u.user_id, i
-			WHERE i.queue=1 AND i.offer_id=oc.offer_id AND oc.user_id=2) as clothes
+			WHERE i.queue=1 AND i.offer_id=oc.offer_id AND oc.user_id=$1) as clothes
 	UNION
 SELECT electronics.* FROM (WITH i AS(SELECT concat('offers_picture/electronics/', offer_id, '/', picture_name) file, 
 					 ROW_NUMBER() OVER(PARTITION BY p.offer_id ORDER BY p.picture_id ASC) as queue, p.offer_id
@@ -589,7 +589,7 @@ SELECT electronics.* FROM (WITH i AS(SELECT concat('offers_picture/electronics/'
 		u.user_city::varchar, price::float8, oe.created_at::timestamp without time zone
 			FROM offer_electronics.offers oe 
 			INNER JOIN users u ON oe.user_id=u.user_id, i
-			WHERE i.queue=1 AND i.offer_id=oe.offer_id AND oe.user_id=1) as electronics
+			WHERE i.queue=1 AND i.offer_id=oe.offer_id AND oe.user_id=$1) as electronics
 	UNION
 SELECT music_accessories.* FROM (WITH i AS(SELECT concat('offers_picture/music-accessories/', offer_id, '/', picture_name) file, 
 					 ROW_NUMBER() OVER(PARTITION BY p.offer_id ORDER BY p.picture_id ASC) as queue, p.offer_id
@@ -598,7 +598,7 @@ SELECT music_accessories.* FROM (WITH i AS(SELECT concat('offers_picture/music-a
 		u.user_city::varchar, price::float8, oma.created_at::timestamp without time zone
 			FROM offer_music_accessories.offers oma 
 			INNER JOIN users u ON oma.user_id=u.user_id, i
-			WHERE i.queue=1 AND i.offer_id=oma.offer_id AND oma.user_id=1) as music_accessories;
+			WHERE i.queue=1 AND i.offer_id=oma.offer_id AND oma.user_id=$1) as music_accessories;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -629,6 +629,50 @@ CREATE FUNCTION change_address(bigint, varchar) RETURNS boolean AS $$
 BEGIN
 	IF EXISTS(SELECT * FROM users WHERE user_id=$1) THEN
 		UPDATE users SET user_city=$2, updated_at=NOW() WHERE user_id=$1;
+		RETURN true;
+	END IF;
+	RETURN false;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION offer_automotive.delete_offer(bigint, bigint) RETURNS boolean AS $$
+BEGIN
+	IF EXISTS(SELECT * FROM offer_automotive.offers WHERE offer_id=$1 AND user_id=$2) THEN
+		DELETE FROM offer_automotive.offers WHERE offer_id=$1;
+		RETURN true;
+	END IF;
+	RETURN false;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION offer_clothes.delete_offer(bigint, bigint) RETURNS boolean AS $$
+BEGIN
+	IF EXISTS(SELECT * FROM offer_clothes.offers WHERE offer_id=$1 AND user_id=$2) THEN
+		DELETE FROM offer_clothes.offers WHERE offer_id=$1;
+		RETURN true;
+	END IF;
+	RETURN false;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION offer_electronics.delete_offer(bigint, bigint) RETURNS boolean AS $$
+BEGIN
+	IF EXISTS(SELECT * FROM offer_electronicss.offers WHERE offer_id=$1 AND user_id=$2) THEN
+		DELETE FROM offer_electronics.offers WHERE offer_id=$1;
+		RETURN true;
+	END IF;
+	RETURN false;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION offer_music_accessories.delete_offer(bigint, bigint) RETURNS boolean AS $$
+BEGIN
+	IF EXISTS(SELECT * FROM offer_music_accessories.offers WHERE offer_id=$1 AND user_id=$2) THEN
+		DELETE FROM offer_music_accessories.offers WHERE offer_id=$1;
 		RETURN true;
 	END IF;
 	RETURN false;
