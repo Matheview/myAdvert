@@ -1,1 +1,0 @@
-<!--Skrypt php wylogowywujący + powrót do index.php-->
